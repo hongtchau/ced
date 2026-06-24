@@ -95,7 +95,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
-    margin-bottom: 40px;
+    margin-bottom: 60px;
   }
   .stat-card {
     background: #fff;
@@ -109,24 +109,70 @@
   .stat-num { font-size: 2.3rem; font-weight: 700; color: var(--teal); }
   .stat-label { font-size: 0.95rem; color: #555; margin-top: 5px; }
 
-  /* --- FEEDBACK CAROUSEL/GRID --- */
-  .feedback-section {
-    margin-bottom: 80px;
+  /* --- CAREER JOURNEY TIMELINE --- */
+  .timeline-section {
+    margin-bottom: 100px;
   }
-  .feedback-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 20px;
-  }
-  .feedback-card {
-    background: rgba(255, 255, 255, 0.5);
-    border: 1px dashed var(--ink);
-    border-radius: 12px;
-    padding: 20px;
-    font-style: italic;
-    font-size: 0.95rem;
-    line-height: 1.4;
+  .timeline-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
     position: relative;
+    padding-left: 20px;
+    border-left: 3px dashed var(--ink);
+  }
+  .timeline-node {
+    position: relative;
+    background: #fff;
+    border: 2px solid var(--ink);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 4px 4px 0 var(--ink);
+  }
+  .timeline-node::before {
+    content: '';
+    position: absolute;
+    left: -32px;
+    top: 28px;
+    width: 18px;
+    height: 18px;
+    background: var(--paper);
+    border: 3px solid var(--coral);
+    border-radius: 50%;
+    z-index: 2;
+  }
+  .timeline-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  .timeline-role {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--teal);
+  }
+  .timeline-company {
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--ink);
+  }
+  .timeline-desc {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #444;
+  }
+  .timeline-node.whats-next {
+    background: repeating-linear-gradient(45deg, rgba(201,133,16,0.05), rgba(201,133,16,0.05) 10px, rgba(255,255,255,0.6) 10px, rgba(255,255,255,0.6) 20px);
+    border: 2px dashed var(--mustard);
+  }
+  .timeline-node.whats-next::before {
+    border-color: var(--mustard);
+    background: #fff;
   }
 
   /* --- GRAPHIC SECTIONS --- */
@@ -236,6 +282,7 @@
 <body>
 
 <nav>
+  <a href="#journey">The Journey</a>
   <a href="#platforms">Learning Hubs</a>
   <a href="#experience">The Experience</a>
   <a href="#insights">Data &amp; AI</a>
@@ -269,13 +316,67 @@
     </div>
   </div>
 
-  <!-- USER FEEDBACK SNIPPETS -->
-  <div class="feedback-section">
-    <p class="handwritten" style="font-size: 1.2rem; color: var(--teal); margin-bottom: 12px;">What learners said...</p>
-    <div class="feedback-grid">
-      <div class="feedback-card">"This course was amazing! Intuitive and interactive."</div>
-      <div class="feedback-card">"Pure Gold! I am very much looking forward to the rest of the courses available on Zaps."</div>
-      <div class="feedback-card">"This was awesome, I was able to go at my own pace and the videos were clear. I feel motivated!"</div>
+  <!-- CAREER JOURNEY TIMELINE -->
+  <div class="timeline-section" id="journey">
+    <p class="handwritten" style="font-size: 1.2rem; color: var(--teal); margin-bottom: 15px;">The Journey So Far...</p>
+    <div class="timeline-container">
+      
+      <div class="timeline-node">
+        <div class="timeline-meta">
+          <span class="timeline-role display-font">Instructional Technologist</span>
+          <span class="timeline-company">Brown University</span>
+        </div>
+        <p class="timeline-desc">Supported core in-classroom technology infrastructure, adopted and evaluated emerging learning tech, led hands-on faculty workshops, and successfully migrated complex legacy LMS platforms and learning solutions.</p>
+      </div>
+
+      <div class="timeline-node">
+        <div class="timeline-meta">
+          <span class="timeline-role display-font">Instructional Designer</span>
+          <span class="timeline-company">Brown University</span>
+        </div>
+        <p class="timeline-desc">Partnered closely with university professors to unpack deep research projects and translate complex academic theories into highly engaging, modern technology initiatives.</p>
+      </div>
+
+      <div class="timeline-node">
+        <div class="timeline-meta">
+          <span class="timeline-role display-font">Customer Success / Technical Solutions</span>
+          <span class="timeline-company">Skilljar</span>
+        </div>
+        <p class="timeline-desc">Guided 50+ enterprise companies through the launch of their custom LMS platforms. Managed a book of 15 premium strategic accounts representing 1/4 of total company ARR, engineered backend solutions for custom certification setups and platform rebranding, built scalable employee onboarding programs, and organized our very first Customer Advisory Board (CAB).</p>
+      </div>
+
+      <div class="timeline-node">
+        <div class="timeline-meta">
+          <span class="timeline-role display-font">Enterprise Customer Success Manager</span>
+          <span class="timeline-company">Zapier</span>
+        </div>
+        <p class="timeline-desc">Scaled enterprise customer health monitoring across 100 massive technical accounts, stepped in to solve high-stakes backend system disconnects, built out an Enterprise CAB, and co-authored operational playbooks that explicitly integrated deep product usage metrics directly into our global Customer Health Score frameworks.</p>
+      </div>
+
+      <div class="timeline-node">
+        <div class="timeline-meta">
+          <span class="timeline-role display-font">Manager, Customer Education &amp; Development</span>
+          <span class="timeline-company">Zapier</span>
+        </div>
+        <p class="timeline-desc">Built a brand-new internal educational team from the ground up (0 to 1). Audited and repackaged unstructured tribal knowledge and scattered assets into 4 highly organized, structured dynamic learning paths.</p>
+      </div>
+
+      <div class="timeline-node">
+        <div class="timeline-meta">
+          <span class="timeline-role display-font">Manager, Product Onboarding &amp; Education</span>
+          <span class="timeline-company">PitchBook Data</span>
+        </div>
+        <p class="timeline-desc">Led comprehensive product onboarding operations and highly precise financial market training programs. Designed completely new structural project templates using Asana and Airtable, managed large-scale product evaluation and deployment pipelines, and fully implemented and customized Exec AI to automate team output tracking.</p>
+      </div>
+
+      <div class="timeline-node whats-next">
+        <div class="timeline-meta">
+          <span class="timeline-role display-font" style="color: var(--mustard);">What's Next?</span>
+          <span class="timeline-company handwritten" style="text-transform: none;">The Horizon</span>
+        </div>
+        <p class="timeline-desc">Bringing high-powered data ecosystems, deep learning architecture, and custom AI tools together to build the next generation of scalable enablement infrastructure.</p>
+      </div>
+
     </div>
   </div>
 
