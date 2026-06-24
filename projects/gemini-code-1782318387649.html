@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Systems Meet Enablement — Presentation Blueprints</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<!-- Kalam for authentic whiteboard writing, Space Grotesk for sharp clear titles -->
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --whiteboard: #fcfbfa;
+    --marker-black: #1a1a1a;
+    --marker-blue: #185adb;
+    --marker-red: #d9383a;
+    --marker-green: #117554;
+    --highlighter: rgba(255, 235, 59, 0.45);
+    --grid-line: rgba(24, 90, 219, 0.06);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #2b2b2b;
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--marker-black);
+  }
+
+  /* Coda Fill Viewport Container Setup */
+  .presentation-container {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding: 40px 20px;
+  }
+
+  /* Slide Wrapper: Maximizing real-estate inside 16:9 ratio blocks */
+  .slide {
+    position: relative;
+    width: 100%;
+    max-width: 1280px;
+    height: 720px;
+    background-color: var(--whiteboard);
+    background-image: 
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 30px 30px;
+    border: 4px solid var(--marker-black);
+    border-radius: 4px;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.25);
+    padding: 40px 50px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  /* Hand-drawn borders via SVG border manipulation effects or custom strokes */
+  .board-frame {
+    position: absolute;
+    inset: 0;
+    border: 3px solid transparent;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  /* Graphic Facilitation Typography */
+  h1.slide-title {
+    font-family: 'Kalam', cursive;
+    font-size: 3rem;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+    line-height: 1.1;
+    display: inline-block;
+    position: relative;
+  }
+  
+  .slide-title::after {
+    content: "";
+    position: absolute;
+    bottom: -5px; left: 0;
+    width: 100%; height: 5px;
+    background: var(--marker-blue);
+    border-radius: 4px;
+    transform: rotate(-0.5deg);
+  }
+
+  .subtitle {
+    font-family: 'Kalam', cursive;
+    font-size: 1.4rem;
+    color: var(--marker-blue);
+    margin: 0 0 25px 0;
+    font-weight: 400;
+  }
+
+  /* Structural Columns / Layout Systems */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    flex-grow: 1;
+    align-items: stretch;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 25px;
+    flex-grow: 1;
+    align-items: stretch;
+  }
+
+  /* Visual Container Blocks (Drawn Boxes) */
+  .sketch-box {
+    border: 3px solid var(--marker-black);
+    border-radius: 8px 4px 8px 3px/4px 8px 3px 6px; /* Simulates loose pen work */
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.8);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sketch-box.blue-ink { border-color: var(--marker-blue); }
+  .sketch-box.red-ink { border-color: var(--marker-red); }
+  .sketch-box.green-ink { border-color: var(--marker-green); }
+
+  .box-label {
+    font-family: 'Kalam', cursive;
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin: 0 0 15px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .blue-ink .box-label { color: var(--marker-blue); }
+  .red-ink .box-label { color: var(--marker-red); }
+  .green-ink .box-label { color: var(--marker-green); }
+
+  /* Scannable Bullet Points with Marker Icons */
+  ul.marker-bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  ul.marker-bullets li {
+    position: relative;
+    padding-left: 30px;
+    font-size: 1.15rem;
+    line-height: 1.45;
+    font-weight: 600;
+  }
+
+  ul.marker-bullets li::before {
+    content: "➔";
+    position: absolute;
+    left: 0; top: -1px;
+    font-size: 1.2rem;
+    color: var(--marker-black);
+  }
+  
+  .blue-ink ul.marker-bullets li::before { color: var(--marker-blue); content: "✓"; font-size: 1.4rem; top: -5px; }
+  .red-ink ul.marker-bullets li::before { color: var(--marker-red); content: "⚡"; }
+  .green-ink ul.marker-bullets li::before { color: var(--marker-green); content: "★"; }
+
+  /* Graphic elements & Highlights */
+  .highlight {
+    background: var(--highlighter);
+    padding: 2px 6px;
+    border-radius: 3px;
+  }
+
+  .sticker-note {
+    position: absolute;
+    background: #fff9a6;
+    border: 2px solid var(--marker-black);
+    padding: 12px 18px;
+    font-family: 'Kalam', cursive;
+    font-size: 1.1rem;
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.8);
+    transform: rotate(2deg);
+    max-width: 250px;
+    z-index: 5;
+  }
+
+  /* Slide Footers */
+  .slide-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 2px dashed var(--marker-black);
+    padding-top: 15px;
+    margin-top: 15px;
+    font-family: 'Kalam', cursive;
+    font-size: 1.05rem;
+    color: #555;
+  }
+
+  .slide-tag {
+    background: var(--marker-black);
+    color: var(--whiteboard);
+    padding: 2px 10px;
+    font-weight: 700;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.85rem;
+    border-radius: 3px;
+  }
+
+  /* Timeline Connector Graphics for Background Overview */
+  .visual-timeline {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 20px;
+    position: relative;
+    flex-grow: 1;
+  }
+
+  .visual-timeline::before {
+    content: "";
+    position: absolute;
+    top: 110px; left: 5%;
+    width: 90%; height: 4px;
+    background-image: linear-gradient(to right, var(--marker-black) 50%, transparent 50%);
+    background-size: 15px 4px;
+    z-index: 1;
+  }
+
+  .timeline-node {
+    width: 32%;
+    background: #ffffff;
+    border: 3px solid var(--marker-black);
+    border-radius: 8px;
+    padding: 20px;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .node-header {
+    background: var(--marker-black);
+    color: #fff;
+    padding: 5px 10px;
+    font-family: 'Kalam', cursive;
+    font-size: 1.1rem;
+    margin: -20px -20px 15px -20px;
+    border-radius: 4px 4px 0 0;
+    text-align: center;
+  }
+
+  .big-stat {
+    font-family: 'Kalam', cursive;
+    font-size: 2.8rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--marker-red);
+    margin: 10px 0;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div class="presentation-container">
+
+  <!-- ==================== SLIDE 1: BACKGROUND OVERVIEW ==================== -->
+  <div class="slide" id="slide-background">
+    <div class="board-frame"></div>
+    <div>
+      <h1 class="slide-title">System Blueprints &amp; Enablement History</h1>
+      <div class="subtitle">Background Overview (5 Min Loop) — Built for Hong Chau</div>
+    </div>
+
+    <!-- 3-Column Visual Map Timeline -->
+    <div class="visual-timeline">
+      
+      <!-- Box 1: Core Philosophy -->
+      <div class="timeline-node" style="border-color: var(--marker-blue);">
+        <div class="node-header" style="background: var(--marker-blue);">The Driver: Systems + Education</div>
+        <ul class="marker-bullets" style="--marker-black: var(--marker-blue);">
+          <li>Deep love for architecture, structural organization, and designing complex tech solutions[cite: 1].</li>
+          <li>Core mission focuses entirely on <span class="highlight">enabling cross-functional infrastructure</span>[cite: 1].</li>
+          <li>Consultative core: Every blueprint is rooted in team alignment and consensus mapping[cite: 1].</li>
+        </ul>
+      </div>
+
+      <!-- Box 2: PitchBook Chapter -->
+      <div class="timeline-node" style="border-color: var(--marker-green);">
+        <div class="node-header" style="background: var(--marker-green);">PitchBook Frameworks (2025-Present)</div>
+        <div class="big-stat" style="color: var(--marker-green);">SOLO</div>
+        <ul class="marker-bullets" style="--marker-black: var(--marker-green);">
+          <li>Engineered complete Exec AI implementation loops independently from end to end[cite: 1].</li>
+          <li>Automated metrics by passing user data streams into custom Claude skill layers[cite: 1].</li>
+          <li>Slashed standard manager onboarding time by <span class="highlight">40% to 50% total</span>[cite: 1].</li>
+        </ul>
+      </div>
+
+      <!-- Box 3: Zapier Chapter -->
+      <div class="timeline-node" style="border-color: var(--marker-red);">
+        <div class="node-header" style="background: var(--marker-red);">Zapier Core Builds (2020-2025)</div>
+        <div class="big-stat" style="color: var(--marker-red);">+1,150%</div>
+        <ul class="marker-bullets" style="--marker-black: var(--marker-red);">
+          <li>Procured, deployed, and managed Skilljar LMS for massive organization scale[cite: 1].</li>
+          <li>Drove massive student enrollment jump through tightly integrated automation pipelines[cite: 1].</li>
+          <li>Constructed standalone product tracking analytics inside Looker and Airtable data layers[cite: 1].</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Floating Graphic Facilitation Note Stickie -->
+    <div class="sticker-note" style="top: 45px; right: 60px; transform: rotate(3deg); border-color: var(--marker-blue);">
+      <strong>Consultation First:</strong> "Leveraged heavily to smooth tricky organizational shifts &amp; customer friction."
+    </div>
+
+    <div class="slide-footer">
+      <span>Hong Chau — Superhuman Interview Panel</span>
+      <span class="slide-tag">SLIDE 1 / 4</span>
+    </div>
+  </div>
+
+
+  <!-- ==================== SLIDE 2: TAKE-HOME REVIEW (PART 1) ==================== -->
+  <div class="slide" id="slide-takehome-1">
+    <div class="board-frame"></div>
+    <div>
+      <h1 class="slide-title">Problem Architecture &amp; Solution Vectors</h1>
+      <div class="subtitle">Take-home Exercise Review: Part 1 (25 Min Loop)</div>
+    </div>
+
+    <div class="grid-2">
+      <!-- Left Box: Problem Framing & Discovery -->
+      <div class="sketch-box blue-ink">
+        <div class="box-label">1. Discovery &amp; Consultation Phase</div>
+        <ul class="marker-bullets">
+          <li>Mapped immediate bottlenecks with core functional leads before touching system code[cite: 1].</li>
+          <li>Analyzed drop-off points inside the customer journey to locate hidden system dropouts.</li>
+          <li>Designed cross-functional intake frameworks via unified structural templates[cite: 1].</li>
+          <li>Isolated platform friction fields limiting product adoption metrics.</li>
+        </ul>
+      </div>
+
+      <!-- Right Box: System Considerations & Trade-Offs -->
+      <div class="sketch-box red-ink">
+        <div class="box-label">2. Architectural Trade-offs Assessed</div>
+        <ul class="marker-bullets">
+          <li><strong>Build vs. Buy Assessment:</strong> Weighed immediate integration velocity against engineering overhead costs[cite: 1].</li>
+          <li><strong>Data Schema Pipelines:</strong> Addressed user profile syncing mechanisms across data systems[cite: 1].</li>
+          <li><strong>Operational Friction:</strong> Cleared operational drag to keep deployment setups simple[cite: 1].</li>
+          <li><strong>Fault Tolerance Rules:</strong> Enforced safety parameters to handle critical loop updates cleanly[cite: 1].</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Small hand drawn style anchor highlight box at the bottom -->
+    <div class="sketch-box green-ink" style="padding: 12px 20px; margin-top: 20px; flex-direction: row; align-items: center; justify-content: space-between;">
+      <span style="font-family: 'Kalam', cursive; font-size: 1.2rem; font-weight: 700; color: var(--marker-green);">➔ RECOVERY PLAYBOOK EXAMPLE:</span>
+      <span style="font-size: 1.05rem; font-weight: 600;">Stepped into cross-functional war rooms during a high-value system error to overhaul breaking webhook loops[cite: 1].</span>
+    </div>
+
+    <div class="slide-footer">
+      <span>Systems Blueprint — In-App Architecture</span>
+      <span class="slide-tag">SLIDE 2 / 4</span>
+    </div>
+  </div>
+
+
+  <!-- ==================== SLIDE 3: TAKE-HOME REVIEW (PART 2) ==================== -->
+  <div class="slide" id="slide-takehome-2">
+    <div class="board-frame"></div>
+    <div>
+      <h1 class="slide-title">Deep Dive: In-App Education Engine</h1>
+      <div class="subtitle">Take-home Exercise Review: Part 2 (Execution Blueprint)</div>
+    </div>
+
+    <div class="grid-3">
+      <!-- Pillar 1: Stack Architecture -->
+      <div class="sketch-box blue-ink">
+        <div class="box-label">Phase I: Core Stack</div>
+        <ul class="marker-bullets">
+          <li>Deploy enterprise LMS modules to control centralized learner patterns[cite: 1].</li>
+          <li>Inject behavioral enrollment webhooks straight into main product hooks[cite: 1].</li>
+          <li>Unify profile properties to display relevant tutorials dynamically.</li>
+        </ul>
+      </div>
+
+      <!-- Pillar 2: Data Autonomy -->
+      <div class="sketch-box green-ink">
+        <div class="box-label">Phase II: Data Loops</div>
+        <ul class="marker-bullets">
+          <li>Build metrics like <span class="highlight">Rate of Feature Usage</span> directly into tracking sheets[cite: 1].</li>
+          <li>Track activation states in Looker dashboards without adding engineering debt[cite: 1].</li>
+          <li>Isolate specific dropping spots to instantly adapt targeted messaging loops.</li>
+        </ul>
+      </div>
+
+      <!-- Pillar 3: AI Augmentation -->
+      <div class="sketch-box red-ink">
+        <div class="box-label">Phase III: AI Layer</div>
+        <ul class="marker-bullets">
+          <li>Process session transcripts directly using structured LLM nodes[cite: 1].</li>
+          <li>Produce customized workspace playbooks contextually on user dashboards[cite: 1].</li>
+          <li>Keep maintenance loops fully self-contained using clean code layers[cite: 1].</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sticker-note" style="bottom: 80px; right: 70px; transform: rotate(-2deg); border-color: var(--marker-red); background: #ffd6e8;">
+      <strong>The Goal:</strong> Enable teams to shift quickly without structural drag[cite: 1].
+    </div>
+
+    <div class="slide-footer">
+      <span>Operational Blueprint — End-to-End Delivery</span>
+      <span class="slide-tag">SLIDE 3 / 4</span>
+    </div>
+  </div>
+
+
+  <!-- ==================== SLIDE 4: WHY SUPERHUMAN? ==================== -->
+  <div class="slide" id="slide-whysuperhuman">
+    <div class="board-frame"></div>
+    <div>
+      <h1 class="slide-title">Why Superhuman?</h1>
+      <div class="subtitle">Alignment, Vision &amp; Strategy (5 Min Loop)</div>
+    </div>
+
+    <div class="grid-2">
+      <!-- Left: The Product Vector -->
+      <div class="sketch-box blue-ink" style="justify-content: center; padding: 35px;">
+        <div class="box-label" style="font-size: 1.6rem;">1. Speed &amp; Efficiency Standards</div>
+        <ul class="marker-bullets" style="gap: 20px;">
+          <li>Superhuman values building lightning-fast workflows that match my passion for clean systems.</li>
+          <li>Opportunity to scale self-service onboarding flows across highly technical customer tiers[cite: 1].</li>
+          <li>Perfect space to apply my experience blending custom AI layers with structural user platforms[cite: 1].</li>
+        </ul>
+      </div>
+
+      <!-- Right: Value Proposition -->
+      <div class="sketch-box green-ink" style="justify-content: center; padding: 35px;">
+        <div class="box-label" style="font-size: 1.6rem;">2. My Targeted Contributions</div>
+        <ul class="marker-bullets" style="gap: 20px;">
+          <li><strong>Zero Data Lag:</strong> Build and scale operational tracking dashboards independently from scratch[cite: 1].</li>
+          <li><strong>Consultative Execution:</strong> Deep collaboration style built to align complex teams smoothly[cite: 1].</li>
+          <li><strong>AI Toolkit Delivery:</strong> Proven experience launching production-ready automation workflows[cite: 1].</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span>Q&amp;A Loop Next (10 Min)</span>
+      <span class="slide-tag">SLIDE 4 / 4</span>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
