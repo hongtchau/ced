@@ -31,16 +31,16 @@
   .handwritten { font-family: 'Kalam', cursive; }
   .display-font { font-family: 'Space Grotesk', sans-serif; }
 
-  /* --- STATIC STATIC NAV (NOT FLOATING) --- */
+  /* --- SIMPLE FLOATING NAV --- */
   nav {
-    margin: 20px auto 40px auto;
-    max-width: fit-content;
+    position: fixed;
+    top: 20px;
+    right: 20px;
     background: #fff;
     border: 2px solid var(--ink);
     border-radius: 30px;
     padding: 8px 24px;
     display: flex;
-    justify-content: center;
     gap: 20px;
     box-shadow: 4px 4px 0 var(--ink);
     z-index: 100;
@@ -58,7 +58,7 @@
   .canvas {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 40px 24px 80px 24px;
+    padding: 80px 24px;
     position: relative;
   }
 
@@ -109,7 +109,7 @@
   .stat-num { font-size: 2.3rem; font-weight: 700; color: var(--teal); }
   .stat-label { font-size: 0.95rem; color: #555; margin-top: 5px; }
 
-  /* --- CAREER ROADMAP (ADAPTIVE CLOTHESLINE) --- */
+  /* --- CAREER ROADMAP (WRAPPING CLOTHESLINE) --- */
   .timeline-section {
     margin-bottom: 100px;
   }
@@ -122,11 +122,11 @@
     padding: 20px 0;
   }
 
-  /* Clothesline Wires behind the cards (Desktop) */
+  /* Clothesline Wires behind the cards */
   .roadmap-grid::before {
     content: '';
     position: absolute;
-    top: 32px;
+    top: 10px;
     left: 0;
     right: 0;
     height: 2px;
@@ -134,11 +134,11 @@
     z-index: 0;
   }
   
-  /* Second Row Clothesline Wire (Desktop) */
+  /* Second Row Clothesline Wire */
   .roadmap-grid::after {
     content: '';
     position: absolute;
-    bottom: 135px;
+    bottom: 256px;
     left: 0;
     right: 0;
     height: 2px;
@@ -179,7 +179,6 @@
     border: 3px solid var(--coral);
     border-radius: 50%;
     z-index: 2;
-    transition: left 0.2s ease;
   }
 
   .roadmap-meta {
@@ -213,6 +212,7 @@
     color: var(--ink);
     position: relative;
     padding-left: 14px;
+    margin-bottom: 4px;
   }
   .roadmap-metric-item::before {
     content: '⚡';
@@ -332,54 +332,45 @@
   /* --- FOOTER CTA --- */
   footer {
     text-align: center;
-    padding: 60px 0;
-    border-top: 3px dashed var(--ink);
+    padding: 60px 40px;
+    border: 3px dashed var(--ink);
+    border-radius: 20px;
+    background: #fff;
+  }
+  .why-superhuman-box {
+    max-width: 780px;
+    margin: 0 auto 40px auto;
+    text-align: left;
+    padding: 24px;
+    border-left: 4px solid var(--teal);
+    background: var(--paper);
+    border-radius: 0 12px 12px 0;
+  }
+  .why-superhuman-box h3 {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+    color: var(--teal);
+  }
+  .why-superhuman-box p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+  .why-superhuman-box p:last-child {
+    margin-bottom: 0;
   }
 
-  /* --- RESPONSIVE ADAPTATIONS --- */
   @media (max-width: 900px) {
-    .roadmap-grid { 
-      grid-template-columns: repeat(2, 1fr); 
-    }
-    /* Turn horizontal line into a clean vertical centerline */
-    .roadmap-grid::before {
-      top: 0;
-      bottom: 0;
-      left: 50%;
-      right: auto;
-      width: 2px;
-      height: 100%;
-      border-left: 2px dashed var(--ink);
-      border-top: none;
-      transform: translateX(-50%);
-    }
-    .roadmap-grid::after { display: none; }
-    
-    /* Adjust pin points to center-ish relative to the line string */
-    .roadmap-node:nth-child(odd)::before { left: calc(100% - 10px); }
-    .roadmap-node:nth-child(even)::before { left: -10px; }
+    .roadmap-grid { grid-template-columns: repeat(2, 1fr); }
+    .roadmap-grid::before, .roadmap-grid::after { display: none; }
   }
-
   @media (max-width: 600px) {
-    header { margin-top: 20px; }
+    .roadmap-grid { grid-template-columns: 1fr; }
+    nav { position: absolute; top: 20px; right: 20px; }
+    header { margin-top: 40px; }
     .board-layout { grid-template-columns: 1fr; }
-    
-    .roadmap-grid { 
-      grid-template-columns: 1fr; 
-      padding-left: 20px;
-    }
-    /* Shift vertical line string over to the left side for single-column tracking */
-    .roadmap-grid::before {
-      left: 6px;
-      transform: none;
-    }
-    /* Snap pins systematically over the left-aligned line */
-    .roadmap-node::before, 
-    .roadmap-node:nth-child(odd)::before, 
-    .roadmap-node:nth-child(even)::before { 
-      left: -22px; 
-      top: 24px;
-    }
+    footer { padding: 40px 20px; }
   }
 </style>
 </head>
@@ -396,20 +387,20 @@
   <header>
     <span class="eyebrow handwritten">The Art of Enablement //</span>
     <h1 class="display-font">I handle the tech so you can focus on the <span class="highlight">learning.</span></h1>
-    <p class="intro-text">I build the behind-the-scenes systems that make customer enablement feel effortless. Whether it’s launching education platforms (like scaling Skilljar for 35K+ students), connecting critical data layers (Looker, Salesforce, HubSpot), or using AI and automation (Zapier, Claude, Perplexity) to erase busywork—I take care of the technical design so your team can focus on what they do best: creating amazing learning content that drives customer success.</p>
+    <p class="intro-text">I build the behind-the-scenes systems that make customer enablement feel effortless. Whether it’s launching education platforms (like scaling Skilljar for 35K+ students), connecting critical data loops (Looker, Salesforce, HubSpot), or using AI and automation (Zapier, Claude, Perplexity) to erase busywork—I take care of the technical design so your team can focus on what they do best: creating amazing learning content that drives customer success.</p>
   </header>
 
   <div class="stats-grid display-font">
     <div class="stat-card">
-      <div class="stat-num">35k+</div>
-      <div class="stat-label">Students Educated on Zapier Learn</div>
+      <div class="stat-num">35,000+</div>
+      <div class="stat-label">Students Educated on Learn</div>
     </div>
     <div class="stat-card">
-      <div class="stat-num">72k+</div>
+      <div class="stat-num">72,000+</div>
       <div class="stat-label">Course Enrollments Hit</div>
     </div>
     <div class="stat-card">
-      <div class="stat-num">26k+</div>
+      <div class="stat-num">26,000+</div>
       <div class="stat-label">Learning Hours Delivered</div>
     </div>
     <div class="stat-card">
@@ -419,7 +410,7 @@
   </div>
 
   <div class="timeline-section" id="journey">
-    <p class="handwritten" style="font-size: 1.4rem; color: var(--teal); margin-bottom: 24px;">The Journey...</p>
+    <p class="handwritten" style="font-size: 1.4rem; color: var(--teal); margin-bottom: 24px;">The Blueprint Route...</p>
     
     <div class="roadmap-grid">
       
@@ -431,7 +422,6 @@
         <div class="roadmap-metrics">
           <div class="roadmap-metric-item">Migrated legacy LMS architectures to modern solutions.</div>
           <div class="roadmap-metric-item">Built resources to transition entire campuses.</div>
-
         </div>
       </div>
 
@@ -442,8 +432,7 @@
         </div>
         <div class="roadmap-metrics">
           <div class="roadmap-metric-item">Translated complex academic theories into high-impact digital initiatives.</div>
-          <div class="roadmap-metric-item">Launched <strong> MOOCs</strong> to engage 400% more learners than traditional formats </div>
-
+          <div class="roadmap-metric-item">Launched <strong>MOOCs</strong> to engage 400% more learners than traditional formats.</div>
         </div>
       </div>
 
@@ -519,9 +508,9 @@
       <div class="block">
         <div class="block-tag">Live Training</div>
         <h3>Cross-Team Problem Solving</h3>
-        <p>When technical glitches or system disconnects threaten the customer experience, I step in to coordinate with engineering, protect your accounts, and fix the root cause.</p>
+        <p>When technical glitches or system disconnects threaten the customer experience, I step in to coordinate across technical operations, protect your accounts, and fix the root cause.</p>
         <ul>
-          <li><strong>Saving Key Revenue:</strong> Led the rapid recovery and complete data-backfill for a critical $200K ARR account after a major backend payment failure.</li>
+          <li><strong>Saving Key Revenue:</strong> Mobilized rapid engineering responses and handled complete data-backfills for a critical $200K ARR account after an unexpected backend webhook failure downscaled its profile parameters.</li>
           <li><strong>Scaled Enablement:</strong> Streamlined our enterprise onboarding playbooks into automated, trigger-based email comms, scaling support coverage to 500+ mid-market customers without adding headcount.</li>
         </ul>
       </div>
@@ -587,8 +576,15 @@
   </section>
 
   <footer>
+    <div class="why-superhuman-box">
+      <h3 class="display-font">Why Superhuman?</h3>
+      <p>Aside from the fact that I am an avid user of Coda and Grammarly, I believe deeply in Superhuman's mission. You index on creativity and prioritize exceptional product experiences, without ever losing the human voice and human insights that make content connect.</p>
+      <p>I value people and problem-centric design, making sure I listen to the core problem and make suggestions that enhance or address the issue without adding extra fluff. I see Superhuman's approach and products doing that same thing.</p>
+    </div>
+
     <h2 class="display-font" style="justify-content: center; margin-bottom: 20px; border: none;">Let's make customer learning effortless.</h2>
-    <p class="handwritten" style="opacity: 0.6; font-size: 1.1rem;">— Built with care for teams that scale modern education —</p>
+    <p class="handwritten" style="opacity: 0.6; font-size: 1.1rem;">— Built with care for teams that amplify human creativity —</p>
+
   </footer>
 </div>
 
