@@ -15,6 +15,7 @@
     --mustard: #C98510;
     --sky: #2A52BE;
     --highlighter: rgba(242, 167, 184, 0.4);
+    --pill-bg: #fff;
   }
   
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -33,7 +34,7 @@
 
   /* --- CANVAS LAYOUT --- */
   .canvas {
-    max-width: 850px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 60px 24px;
     position: relative;
@@ -89,7 +90,7 @@
   .timeline-container {
     display: flex;
     flex-direction: column;
-    gap: 28px;
+    gap: 36px;
     position: relative;
     padding-left: 24px;
     border-left: 3px dashed var(--ink);
@@ -99,14 +100,14 @@
     background: #fff;
     border: 2.5px solid var(--ink);
     border-radius: 16px;
-    padding: 24px;
+    padding: 28px;
     box-shadow: 5px 5px 0 var(--ink);
   }
   .timeline-node::before {
     content: '';
     position: absolute;
     left: -36px;
-    top: 26px;
+    top: 30px;
     width: 18px;
     height: 18px;
     background: var(--paper);
@@ -118,21 +119,65 @@
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
     flex-wrap: wrap;
     gap: 5px;
   }
   .timeline-role {
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     font-weight: 700;
     color: var(--teal);
   }
   .timeline-company {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     color: #555;
+  }
+
+  /* --- ENGINE GRID (VIsual storytelling blocks) --- */
+  .engine-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 14px;
+  }
+  @media (max-width: 650px) {
+    .engine-grid { grid-template-columns: 1fr; }
+  }
+
+  .engine-block {
+    background: rgba(0,0,0,0.02);
+    border: 1px dashed rgba(0,0,0,0.15);
+    border-radius: 8px;
+    padding: 14px;
+  }
+  .engine-block-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .eb-systems { color: var(--sky); }
+  .eb-impact { color: var(--coral); }
+
+  /* --- PILLS / CHIPS --- */
+  .tool-pill {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: #fff;
+    color: var(--ink);
+    border: 1.5px solid var(--ink);
+    padding: 2px 8px;
+    border-radius: 20px;
+    margin: 2px;
+    box-shadow: 1px 1px 0 var(--ink);
   }
   
   .timeline-node ul {
@@ -143,32 +188,18 @@
     font-size: 0.95rem;
     line-height: 1.5;
     color: #333;
-    margin-bottom: 10px;
-    padding-left: 20px;
+    margin-bottom: 6px;
+    padding-left: 15px;
     position: relative;
   }
   .timeline-node ul li::before {
-    content: '→';
+    content: '•';
     position: absolute;
     left: 0;
-    color: var(--coral);
+    color: var(--mustard);
     font-weight: bold;
   }
 
-  .tech-tag {
-    display: inline-block;
-    font-size: 0.75rem;
-    font-weight: 700;
-    background: rgba(13, 110, 102, 0.1);
-    color: var(--teal);
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-right: 6px;
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
-    vertical-align: middle;
-  }
-  
   .timeline-node.whats-next {
     background: repeating-linear-gradient(45deg, rgba(201,133,16,0.05), rgba(201,133,16,0.05) 10px, rgba(255,255,255,0.6) 10px, rgba(255,255,255,0.6) 20px);
     border: 2.5px dashed var(--mustard);
@@ -202,7 +233,7 @@
     <p class="intro-text">I bridge the gap between complex backend architectures and modern learning programs. From engineering automated content pipelines to mapping student data ecosystems into health score metrics, I build the operational technical blueprints that make enterprise customer enablement completely effortless.</p>
   </header>
 
-  <!-- QUICK METRICS -->
+  <!-- QUICK METRICS BANNER -->
   <div class="stats-grid display-font">
     <div class="stat-card">
       <div class="stat-num">35,000+</div>
@@ -231,10 +262,23 @@
         <span class="timeline-role display-font">Instructional Technologist</span>
         <span class="timeline-company">Brown University</span>
       </div>
-      <ul>
-        <li><span class="tech-tag">LMS Infrastructure</span>Managed core classroom technology frameworks and coordinated major legacy LMS data migration strategies.</li>
-        <li><span class="tech-tag">Enablement</span>Designed and led software adoption workshops to rapidly upscale faculty technical competencies.</li>
-      </ul>
+      <p style="font-size: 0.95rem; color: #555; margin-bottom: 10px;">Managed core in-classroom technology systems and framework strategies.</p>
+      
+      <div class="engine-grid">
+        <div class="engine-block">
+          <div class="engine-block-title eb-systems">🛠️ Stack &amp; Tooling</div>
+          <div class="tool-pill">LMS Environments</div>
+          <div class="tool-pill">Classroom Hardware</div>
+          <div class="tool-pill">Migration Scripts</div>
+        </div>
+        <div class="engine-block">
+          <div class="engine-block-title eb-impact">📊 Quantifiable Outcomes</div>
+          <ul>
+            <li>Migrated outdated legacy LMS infrastructures seamlessly over to modern learning systems.</li>
+            <li>Led technical faculty training workshops to spark immediate classroom technology adoptions.</li>
+          </ul>
+        </div>
+      </div>
     </div>
 
     <!-- BROWN 2 -->
@@ -243,9 +287,22 @@
         <span class="timeline-role display-font">Instructional Designer</span>
         <span class="timeline-company">Brown University</span>
       </div>
-      <ul>
-        <li><span class="tech-tag">Product Design</span>Partnered directly with research professors to break down complex academic concepts and translate them into next-generation digital products.</li>
-      </ul>
+      <p style="font-size: 0.95rem; color: #555; margin-bottom: 10px;">Partnered directly with research faculty to convert theory into operational technology design.</p>
+      
+      <div class="engine-grid">
+        <div class="engine-block">
+          <div class="engine-block-title eb-systems">🛠️ Stack &amp; Tooling</div>
+          <div class="tool-pill">Digital Media Suites</div>
+          <div class="tool-pill">UX/UI Blueprints</div>
+          <div class="tool-pill">Curriculum Prototyping</div>
+        </div>
+        <div class="engine-block">
+          <div class="engine-block-title eb-impact">📊 Quantifiable Outcomes</div>
+          <ul>
+            <li>Translated highly complex academic research projects into fresh, modern, interactive student tech portfolios.</li>
+          </ul>
+        </div>
+      </div>
     </div>
 
     <!-- SKILLJAR -->
@@ -254,12 +311,25 @@
         <span class="timeline-role display-font">Customer Success &amp; Technical Solutions</span>
         <span class="timeline-company">Skilljar</span>
       </div>
-      <ul>
-        <li><span class="tech-tag">Architecture</span>Guided 50+ enterprise clients through end-to-end setups of their foundational LMS platform environments.</li>
-        <li><span class="tech-tag">Revenue Operations</span>Managed a portfolio of our top 15 strategic accounts, successfully expanding and retaining 25% of the company's total ARR.</li>
-        <li><span class="tech-tag">API &amp; Customization</span>Engineered deep technical solutions for custom certification integrations, global brand modifications, and product onboarding playbooks.</li>
-        <li><span class="tech-tag">Community</span>Designed and stood up the organization's initial Customer Advisory Board (CAB) program.</li>
-      </ul>
+      <p style="font-size: 0.95rem; color: #555; margin-bottom: 10px;">Engineered technical platform setups while maintaining strategic enterprise expansion pipelines.</p>
+      
+      <div class="engine-grid">
+        <div class="engine-block">
+          <div class="engine-block-title eb-systems">🛠️ Stack &amp; Tooling</div>
+          <div class="tool-pill">Skilljar LMS</div>
+          <div class="tool-pill">Salesforce</div>
+          <div class="tool-pill">HTML/CSS Custom Overrides</div>
+          <div class="tool-pill">Certification APIs</div>
+        </div>
+        <div class="engine-block">
+          <div class="engine-block-title eb-impact">📊 Quantifiable Outcomes</div>
+          <ul>
+            <li>Guided over **50 enterprise customers** step-by-step through baseline LMS launch configurations.</li>
+            <li>Managed the top **15 strategic accounts** to grow and retain **1/4 of total company ARR**.</li>
+            <li>Launched our first Customer Advisory Board (CAB) and built playbooks for technical certification setups and brand identity changes.</li>
+          </ul>
+        </div>
+      </div>
     </div>
 
     <!-- ZAPIER CSM -->
@@ -268,11 +338,25 @@
         <span class="timeline-role display-font">Enterprise Customer Success Manager</span>
         <span class="timeline-company">Zapier</span>
       </div>
-      <ul>
-        <li><span class="tech-tag">Data Engineering</span>Co-authored backend playbooks tracking user telemetry to feed live product utilization metrics straight into our Customer Health Scores.</li>
-        <li><span class="tech-tag">Technical Risk</span>Managed retention for a highly technical book of 100 enterprise accounts, architecting immediate solutions for complex system breaks.</li>
-        <li><span class="tech-tag">CAB Development</span>Built and operationalized Zapier's dedicated Enterprise Customer Advisory Board.</li>
-      </ul>
+      <p style="font-size: 0.95rem; color: #555; margin-bottom: 10px;">Scaled enterprise success models through automated product health tracking matrices.</p>
+      
+      <div class="engine-grid">
+        <div class="engine-block">
+          <div class="engine-block-title eb-systems">🛠️ Stack &amp; Tooling</div>
+          <div class="tool-pill">Zapier Integration Engine</div>
+          <div class="tool-pill">Looker</div>
+          <div class="tool-pill">Product Usage Telemetry</div>
+          <div class="tool-pill">Customer Health Score Logs</div>
+        </div>
+        <div class="engine-block">
+          <div class="engine-block-title eb-impact">📊 Quantifiable Outcomes</div>
+          <ul>
+            <li>Scaled account health monitoring setups dynamically across a portfolio of **100 enterprise accounts**.</li>
+            <li>Co-authored playbooks that mapped raw product usage data directly into our Global Customer Health Scores.</li>
+            <li>Built an Enterprise CAB to protect and preserve revenue across highly complex technical environments.</li>
+          </ul>
+        </div>
+      </div>
     </div>
 
     <!-- ZAPIER CED -->
@@ -281,11 +365,26 @@
         <span class="timeline-role display-font">Manager, Customer Education</span>
         <span class="timeline-company">Zapier</span>
       </div>
-      <ul>
-        <li><span class="tech-tag">0 to 1 Launch</span>Built the brand-new Customer Education department from the ground up, directing personnel and strategy.</li>
-        <li><span class="tech-tag">Zapier Learn Academy</span>Synthesized scattered documentation and tribal knowledge to create 12 learning paths, 40 courses, and 150+ video modules.</li>
-        <li><span class="tech-tag">Data Automation</span>Linked student triggers to HubSpot and Qualtrics via Zapier, routing engagement loops to over 150k active platform learners.</li>
-      </ul>
+      <p style="font-size: 0.95rem; color: #555; margin-bottom: 10px;">Stood up a unified customer academy engine from 0-1 using systematic data loops.</p>
+      
+      <div class="engine-grid">
+        <div class="engine-block">
+          <div class="engine-block-title eb-systems">🛠️ Stack &amp; Tooling</div>
+          <div class="tool-pill">Asana</div>
+          <div class="tool-pill">Skilljar</div>
+          <div class="tool-pill">HubSpot Automation</div>
+          <div class="tool-pill">Amplitude</div>
+          <div class="tool-pill">Qualtrics</div>
+        </div>
+        <div class="engine-block">
+          <div class="engine-block-title eb-impact">📊 Quantifiable Outcomes</div>
+          <ul>
+            <li>Built an entire education department from scratch (**0 to 1**), deploying **4 structured learning paths**.</li>
+            <li>Linked Asana pipelines to automatically coordinate HTML courses straight into Skilljar.</li>
+            <li>Connected student milestones to HubSpot, driving targeted communication loops to **150,000+ active platform learners**.</li>
+          </ul>
+        </div>
+      </div>
     </div>
 
     <!-- PITCHBOOK -->
@@ -294,11 +393,25 @@
         <span class="timeline-role display-font">Program Manager, Product &amp; Industry Training</span>
         <span class="timeline-company">PitchBook Data</span>
       </div>
-      <ul>
-        <li><span class="tech-tag">Scale &amp; Training</span>Directed overarching system onboarding software environments along with advanced, deep-dive corporate financial training paths.</li>
-        <li><span class="tech-tag">Asana + Airtable</span>Completely overhauled project management execution by creating interconnected system change evaluation models.</li>
-        <li><span class="tech-tag">Exec AI Integration</span>Vetted, implemented, and managed the complete workspace rollout of custom generative AI tools to automate internal task tracking logs.</li>
-      </ul>
+      <p style="font-size: 0.95rem; color: #555; margin-bottom: 10px;">Re-architected tracking structures for comprehensive software and deep financial industry programs.</p>
+      
+      <div class="engine-grid">
+        <div class="engine-block">
+          <div class="engine-block-title eb-systems">🛠️ Stack &amp; Tooling</div>
+          <div class="tool-pill">Exec AI</div>
+          <div class="tool-pill">Asana (Advanced Templates)</div>
+          <div class="tool-pill">Airtable Databases</div>
+          <div class="tool-pill">Product Evaluation Pipelines</div>
+        </div>
+        <div class="engine-block">
+          <div class="engine-block-title eb-impact">📊 Quantifiable Outcomes</div>
+          <ul>
+            <li>Built unified project management ecosystems using **Asana &amp; Airtable** to evaluate rolling product change impacts.</li>
+            <li>Vetted, integrated, and managed the complete workspace rollout of **Exec AI** tools.</li>
+            <li>Automated internal team output metrics, transforming manual task logs into an automated logging matrix.</li>
+          </ul>
+        </div>
+      </div>
     </div>
 
     <!-- FUTURE -->
@@ -307,17 +420,22 @@
         <span class="timeline-role display-font" style="color: var(--mustard);">What's Next?</span>
         <span class="timeline-company handwritten" style="text-transform: none;">The Horizon</span>
       </div>
-      <ul>
-        <li>Bringing high-powered data loops, learning infrastructure, and custom AI tools together to build the next generation of enterprise enablement architecture.</li>
-      </ul>
+      <p style="font-size: 0.95rem; color: #555; margin-bottom: 10px;">The Next System Build...</p>
+      
+      <div class="engine-grid">
+        <div class="engine-block" style="grid-column: 1 / -1;">
+          <div class="engine-block-title" style="color: var(--mustard);">🚀 The Architecture Plan</div>
+          <p style="font-size: 0.9rem; line-height: 1.5; color: #444;">Bringing high-powered data loops, enterprise-level learning infrastructure, and customized generative AI frameworks together to engineer the next generation of scalable enablement engines.</p>
+        </div>
+      </div>
     </div>
 
   </div>
 
   <!-- FOOTER -->
   <footer>
-    <h2 class="display-font" style="justify-content: center; margin-bottom: 15px; border: none; font-size: 1.6rem;">Let's build the technical engine.</h2>
-    <p class="handwritten" style="opacity: 0.6; font-size: 1rem;">— Designed for teams that scale modern education —</p>
+    <h2 class="display-font" style="justify-content: center; margin-bottom: 15px; border: none; font-size: 1.6rem;">Let's build a smarter technical engine.</h2>
+    <p class="handwritten" style="opacity: 0.6; font-size: 1rem;">— Designed for systems that scale modern education —</p>
   </footer>
 </div>
 
