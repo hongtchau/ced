@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Technical & Educational Canvas</title>
+<title>Technical Enablement & Learning Architecture</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -31,109 +31,82 @@
   .handwritten { font-family: 'Kalam', cursive; }
   .display-font { font-family: 'Space Grotesk', sans-serif; }
 
-  /* --- SIMPLE FLOATING NAV --- */
-  nav {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: #fff;
-    border: 2px solid var(--ink);
-    border-radius: 30px;
-    padding: 8px 24px;
-    display: flex;
-    gap: 20px;
-    box-shadow: 4px 4px 0 var(--ink);
-    z-index: 100;
-  }
-  nav a {
-    text-decoration: none;
-    color: var(--ink);
-    font-weight: 600;
-    font-size: 0.9rem;
-    transition: color 0.2s;
-  }
-  nav a:hover { color: var(--teal); }
-
   /* --- CANVAS LAYOUT --- */
   .canvas {
-    max-width: 1100px;
+    max-width: 850px;
     margin: 0 auto;
-    padding: 80px 24px;
+    padding: 60px 24px;
     position: relative;
   }
 
   /* --- HEADER SECTIONS --- */
   header {
-    margin-bottom: 80px;
+    margin-bottom: 50px;
     position: relative;
   }
   .eyebrow {
     color: var(--coral);
-    font-size: 1.4rem;
-    margin-bottom: 10px;
+    font-size: 1.3rem;
+    margin-bottom: 8px;
     display: inline-block;
     transform: rotate(-1deg);
   }
   h1 {
-    font-size: clamp(2.5rem, 6vw, 4.2rem);
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
     line-height: 1.15;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
   }
   .highlight {
     background: linear-gradient(180deg, transparent 60%, var(--highlighter) 60%);
     padding: 0 4px;
   }
   .intro-text {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     line-height: 1.6;
-    max-width: 850px;
     color: #333;
   }
 
   /* --- QUICK BANNER STATS --- */
   .stats-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
     margin-bottom: 60px;
   }
   .stat-card {
     background: #fff;
     border: 2px solid var(--ink);
     border-radius: 12px;
-    padding: 24px;
-    box-shadow: 5px 5px 0 var(--ink);
-    transform: rotate(var(--rot, -1deg));
+    padding: 20px;
+    box-shadow: 4px 4px 0 var(--ink);
+    transform: rotate(var(--rot, -0.5deg));
   }
-  .stat-card:nth-child(even) { --rot: 1.5deg; }
-  .stat-num { font-size: 2.3rem; font-weight: 700; color: var(--teal); }
-  .stat-label { font-size: 0.95rem; color: #555; margin-top: 5px; }
+  .stat-card:nth-child(even) { --rot: 1deg; }
+  .stat-num { font-size: 2rem; font-weight: 700; color: var(--teal); }
+  .stat-label { font-size: 0.85rem; color: #555; margin-top: 4px; font-weight: 500; }
 
   /* --- CAREER JOURNEY TIMELINE --- */
-  .timeline-section {
-    margin-bottom: 100px;
-  }
   .timeline-container {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 28px;
     position: relative;
-    padding-left: 20px;
+    padding-left: 24px;
     border-left: 3px dashed var(--ink);
   }
   .timeline-node {
     position: relative;
     background: #fff;
-    border: 2px solid var(--ink);
-    border-radius: 12px;
+    border: 2.5px solid var(--ink);
+    border-radius: 16px;
     padding: 24px;
-    box-shadow: 4px 4px 0 var(--ink);
+    box-shadow: 5px 5px 0 var(--ink);
   }
   .timeline-node::before {
     content: '';
     position: absolute;
-    left: -32px;
-    top: 28px;
+    left: -36px;
+    top: 26px;
     width: 18px;
     height: 18px;
     background: var(--paper);
@@ -145,94 +118,36 @@
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     flex-wrap: wrap;
     gap: 5px;
   }
   .timeline-role {
-    font-size: 1.15rem;
+    font-size: 1.2rem;
     font-weight: 700;
     color: var(--teal);
   }
   .timeline-company {
-    font-size: 0.95rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--ink);
-  }
-  .timeline-desc {
-    font-size: 0.95rem;
-    line-height: 1.5;
-    color: #444;
-  }
-  .timeline-node.whats-next {
-    background: repeating-linear-gradient(45deg, rgba(201,133,16,0.05), rgba(201,133,16,0.05) 10px, rgba(255,255,255,0.6) 10px, rgba(255,255,255,0.6) 20px);
-    border: 2px dashed var(--mustard);
-  }
-  .timeline-node.whats-next::before {
-    border-color: var(--mustard);
-    background: #fff;
-  }
-
-  /* --- GRAPHIC SECTIONS --- */
-  section {
-    margin-bottom: 100px;
-    scroll-margin-top: 100px;
-  }
-  h2 {
-    font-size: 2rem;
-    margin-bottom: 30px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  h2::after {
-    content: '';
-    flex-grow: 1;
-    height: 3px;
-    background: repeating-linear-gradient(90deg, var(--ink), var(--ink) 4px, transparent 4px, transparent 8px);
-  }
-
-  /* --- BOX BLOCKS --- */
-  .board-layout {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-  }
-  .block {
-    background: #fff;
-    border: 2.5px solid var(--ink);
-    border-radius: 16px;
-    padding: 30px;
-    position: relative;
-    box-shadow: 6px 6px 0 rgba(0,0,0,0.05);
-  }
-  .block-tag {
-    position: absolute;
-    top: -12px;
-    left: 20px;
-    background: var(--ink);
-    color: #fff;
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     font-weight: 700;
-    padding: 2px 10px;
-    border-radius: 4px;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    color: #555;
   }
-  .block h3 { margin-bottom: 15px; font-size: 1.3rem; }
-  .block p { font-size: 1rem; line-height: 1.6; color: #333; margin-bottom: 15px; }
   
-  ul { list-style: none; }
-  ul li {
-    position: relative;
-    padding-left: 20px;
-    margin-bottom: 10px;
-    line-height: 1.5;
-    font-size: 0.95rem;
+  .timeline-node ul {
+    list-style: none;
+    padding-left: 0;
   }
-  ul li::before {
+  .timeline-node ul li {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #333;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+  }
+  .timeline-node ul li::before {
     content: '→';
     position: absolute;
     left: 0;
@@ -240,235 +155,169 @@
     font-weight: bold;
   }
 
-  /* --- SYSTEM FLOW MAP --- */
-  .flow-container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  .tech-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    background: rgba(13, 110, 102, 0.1);
+    color: var(--teal);
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-right: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    vertical-align: middle;
   }
-  .flow-step {
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-    background: rgba(255,255,255,0.6);
-    border: 2px dashed var(--ink);
-    border-radius: 12px;
-    padding: 20px;
+  
+  .timeline-node.whats-next {
+    background: repeating-linear-gradient(45deg, rgba(201,133,16,0.05), rgba(201,133,16,0.05) 10px, rgba(255,255,255,0.6) 10px, rgba(255,255,255,0.6) 20px);
+    border: 2.5px dashed var(--mustard);
   }
-  .step-num {
-    background: var(--mustard);
-    color: var(--ink);
-    width: 36px; height: 36px;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-weight: bold; font-size: 1.1rem; border: 2px solid var(--ink);
-    flex-shrink: 0;
+  .timeline-node.whats-next::before {
+    border-color: var(--mustard);
+    background: #fff;
   }
 
   /* --- FOOTER CTA --- */
   footer {
     text-align: center;
-    padding: 60px 0;
+    padding: 60px 0 20px 0;
     border-top: 3px dashed var(--ink);
+    margin-top: 80px;
   }
 
   @media (max-width: 768px) {
-    nav { position: absolute; top: 20px; right: 20px; }
-    header { margin-top: 40px; }
-    .board-layout { grid-template-columns: 1fr; }
+    .timeline-meta { flex-direction: column; align-items: flex-start; }
+    .timeline-company { margin-top: 2px; }
   }
 </style>
 </head>
 <body>
 
-<nav>
-  <a href="#journey">The Journey</a>
-  <a href="#platforms">Learning Hubs</a>
-  <a href="#experience">The Experience</a>
-  <a href="#insights">Data &amp; AI</a>
-</nav>
-
 <div class="canvas">
   <!-- HERO HEADER -->
   <header>
     <span class="eyebrow handwritten">The Art of Enablement //</span>
-    <h1 class="display-font">I handle the tech so you can focus on the <span class="highlight">learning.</span></h1>
-    <p class="intro-text">I build the behind-the-scenes systems that make customer enablement feel effortless. Whether it’s launching education platforms (like scaling Skilljar for 35K+ students), connecting critical data loops (Looker, Salesforce, HubSpot), or using AI and automation (Zapier, Claude, Perplexity) to erase busywork—I take care of the technical design so your team can focus on what they do best: creating amazing learning content that drives customer success.</p>
+    <h1 class="display-font">I design the systems that make tech education <span class="highlight">scale.</span></h1>
+    <p class="intro-text">I bridge the gap between complex backend architectures and modern learning programs. From engineering automated content pipelines to mapping student data ecosystems into health score metrics, I build the operational technical blueprints that make enterprise customer enablement completely effortless.</p>
   </header>
 
   <!-- QUICK METRICS -->
   <div class="stats-grid display-font">
     <div class="stat-card">
       <div class="stat-num">35,000+</div>
-      <div class="stat-label">Students Educated on Learn</div>
+      <div class="stat-label">Academy Students</div>
     </div>
     <div class="stat-card">
       <div class="stat-num">72,000+</div>
-      <div class="stat-label">Course Enrollments Hit</div>
+      <div class="stat-label">Course Enrollments</div>
     </div>
     <div class="stat-card">
       <div class="stat-num">26,000+</div>
-      <div class="stat-label">Learning Hours Delivered</div>
+      <div class="stat-label">Learning Hours</div>
     </div>
     <div class="stat-card">
-      <div class="stat-num">$38K+</div>
-      <div class="stat-label">New ARR Influenced via Webinars</div>
+      <div class="stat-num">25%</div>
+      <div class="stat-label">Total ARR Managed</div>
     </div>
   </div>
 
   <!-- CAREER JOURNEY TIMELINE -->
-  <div class="timeline-section" id="journey">
-    <p class="handwritten" style="font-size: 1.2rem; color: var(--teal); margin-bottom: 15px;">The Journey So Far...</p>
-    <div class="timeline-container">
-      
-      <div class="timeline-node">
-        <div class="timeline-meta">
-          <span class="timeline-role display-font">Instructional Technologist</span>
-          <span class="timeline-company">Brown University</span>
-        </div>
-        <p class="timeline-desc">Supported core in-classroom technology infrastructure, adopted and evaluated emerging learning tech, led hands-on faculty workshops, and successfully migrated complex legacy LMS platforms and learning solutions.</p>
+  <div class="timeline-container">
+    
+    <!-- BROWN 1 -->
+    <div class="timeline-node">
+      <div class="timeline-meta">
+        <span class="timeline-role display-font">Instructional Technologist</span>
+        <span class="timeline-company">Brown University</span>
       </div>
-
-      <div class="timeline-node">
-        <div class="timeline-meta">
-          <span class="timeline-role display-font">Instructional Designer</span>
-          <span class="timeline-company">Brown University</span>
-        </div>
-        <p class="timeline-desc">Partnered closely with university professors to unpack deep research projects and translate complex academic theories into highly engaging, modern technology initiatives.</p>
-      </div>
-
-      <div class="timeline-node">
-        <div class="timeline-meta">
-          <span class="timeline-role display-font">Customer Success / Technical Solutions</span>
-          <span class="timeline-company">Skilljar</span>
-        </div>
-        <p class="timeline-desc">Guided 50+ enterprise companies through the launch of their custom LMS platforms. Managed a book of 15 premium strategic accounts representing 1/4 of total company ARR, engineered backend solutions for custom certification setups and platform rebranding, built scalable employee onboarding programs, and organized our very first Customer Advisory Board (CAB).</p>
-      </div>
-
-      <div class="timeline-node">
-        <div class="timeline-meta">
-          <span class="timeline-role display-font">Enterprise Customer Success Manager</span>
-          <span class="timeline-company">Zapier</span>
-        </div>
-        <p class="timeline-desc">Scaled enterprise customer health monitoring across 100 massive technical accounts, stepped in to solve high-stakes backend system disconnects, built out an Enterprise CAB, and co-authored operational playbooks that explicitly integrated deep product usage metrics directly into our global Customer Health Score frameworks.</p>
-      </div>
-
-      <div class="timeline-node">
-        <div class="timeline-meta">
-          <span class="timeline-role display-font">Manager, Customer Education &amp; Development</span>
-          <span class="timeline-company">Zapier</span>
-        </div>
-        <p class="timeline-desc">Built a brand-new internal educational team from the ground up (0 to 1). Audited and repackaged unstructured tribal knowledge and scattered assets into 4 highly organized, structured dynamic learning paths.</p>
-      </div>
-
-      <div class="timeline-node">
-        <div class="timeline-meta">
-          <span class="timeline-role display-font">Manager, Product Onboarding &amp; Education</span>
-          <span class="timeline-company">PitchBook Data</span>
-        </div>
-        <p class="timeline-desc">Led comprehensive product onboarding operations and highly precise financial market training programs. Designed completely new structural project templates using Asana and Airtable, managed large-scale product evaluation and deployment pipelines, and fully implemented and customized Exec AI to automate team output tracking.</p>
-      </div>
-
-      <div class="timeline-node whats-next">
-        <div class="timeline-meta">
-          <span class="timeline-role display-font" style="color: var(--mustard);">What's Next?</span>
-          <span class="timeline-company handwritten" style="text-transform: none;">The Horizon</span>
-        </div>
-        <p class="timeline-desc">Bringing high-powered data ecosystems, deep learning architecture, and custom AI tools together to build the next generation of scalable enablement infrastructure.</p>
-      </div>
-
+      <ul>
+        <li><span class="tech-tag">LMS Infrastructure</span>Managed core classroom technology frameworks and coordinated major legacy LMS data migration strategies.</li>
+        <li><span class="tech-tag">Enablement</span>Designed and led software adoption workshops to rapidly upscale faculty technical competencies.</li>
+      </ul>
     </div>
+
+    <!-- BROWN 2 -->
+    <div class="timeline-node">
+      <div class="timeline-meta">
+        <span class="timeline-role display-font">Instructional Designer</span>
+        <span class="timeline-company">Brown University</span>
+      </div>
+      <ul>
+        <li><span class="tech-tag">Product Design</span>Partnered directly with research professors to break down complex academic concepts and translate them into next-generation digital products.</li>
+      </ul>
+    </div>
+
+    <!-- SKILLJAR -->
+    <div class="timeline-node">
+      <div class="timeline-meta">
+        <span class="timeline-role display-font">Customer Success &amp; Technical Solutions</span>
+        <span class="timeline-company">Skilljar</span>
+      </div>
+      <ul>
+        <li><span class="tech-tag">Architecture</span>Guided 50+ enterprise clients through end-to-end setups of their foundational LMS platform environments.</li>
+        <li><span class="tech-tag">Revenue Operations</span>Managed a portfolio of our top 15 strategic accounts, successfully expanding and retaining 25% of the company's total ARR.</li>
+        <li><span class="tech-tag">API &amp; Customization</span>Engineered deep technical solutions for custom certification integrations, global brand modifications, and product onboarding playbooks.</li>
+        <li><span class="tech-tag">Community</span>Designed and stood up the organization's initial Customer Advisory Board (CAB) program.</li>
+      </ul>
+    </div>
+
+    <!-- ZAPIER CSM -->
+    <div class="timeline-node">
+      <div class="timeline-meta">
+        <span class="timeline-role display-font">Enterprise Customer Success Manager</span>
+        <span class="timeline-company">Zapier</span>
+      </div>
+      <ul>
+        <li><span class="tech-tag">Data Engineering</span>Co-authored backend playbooks tracking user telemetry to feed live product utilization metrics straight into our Customer Health Scores.</li>
+        <li><span class="tech-tag">Technical Risk</span>Managed retention for a highly technical book of 100 enterprise accounts, architecting immediate solutions for complex system breaks.</li>
+        <li><span class="tech-tag">CAB Development</span>Built and operationalized Zapier's dedicated Enterprise Customer Advisory Board.</li>
+      </ul>
+    </div>
+
+    <!-- ZAPIER CED -->
+    <div class="timeline-node">
+      <div class="timeline-meta">
+        <span class="timeline-role display-font">Manager, Customer Education</span>
+        <span class="timeline-company">Zapier</span>
+      </div>
+      <ul>
+        <li><span class="tech-tag">0 to 1 Launch</span>Built the brand-new Customer Education department from the ground up, directing personnel and strategy.</li>
+        <li><span class="tech-tag">Zapier Learn Academy</span>Synthesized scattered documentation and tribal knowledge to create 12 learning paths, 40 courses, and 150+ video modules.</li>
+        <li><span class="tech-tag">Data Automation</span>Linked student triggers to HubSpot and Qualtrics via Zapier, routing engagement loops to over 150k active platform learners.</li>
+      </ul>
+    </div>
+
+    <!-- PITCHBOOK -->
+    <div class="timeline-node">
+      <div class="timeline-meta">
+        <span class="timeline-role display-font">Program Manager, Product &amp; Industry Training</span>
+        <span class="timeline-company">PitchBook Data</span>
+      </div>
+      <ul>
+        <li><span class="tech-tag">Scale &amp; Training</span>Directed overarching system onboarding software environments along with advanced, deep-dive corporate financial training paths.</li>
+        <li><span class="tech-tag">Asana + Airtable</span>Completely overhauled project management execution by creating interconnected system change evaluation models.</li>
+        <li><span class="tech-tag">Exec AI Integration</span>Vetted, implemented, and managed the complete workspace rollout of custom generative AI tools to automate internal task tracking logs.</li>
+      </ul>
+    </div>
+
+    <!-- FUTURE -->
+    <div class="timeline-node whats-next">
+      <div class="timeline-meta">
+        <span class="timeline-role display-font" style="color: var(--mustard);">What's Next?</span>
+        <span class="timeline-company handwritten" style="text-transform: none;">The Horizon</span>
+      </div>
+      <ul>
+        <li>Bringing high-powered data loops, learning infrastructure, and custom AI tools together to build the next generation of enterprise enablement architecture.</li>
+      </ul>
+    </div>
+
   </div>
-
-  <!-- SECTION 1: LEARNING HUBS -->
-  <section id="platforms">
-    <h2 class="display-font">1. Building &amp; Managing the Learning Hub</h2>
-    <div class="board-layout">
-      <div class="block">
-        <div class="block-tag">LMS Setup</div>
-        <h3>The One-Stop Shop</h3>
-        <p>I specialize in setting up, launching, and managing learning systems so everything connects seamlessly with the tools your team uses every day.</p>
-        <ul>
-          <li><strong>Zapier Learn Academy:</strong> Built and deployed the customer academy from the ground up, establishing 12 clear learning paths, 40 courses, and 150+ video assets.</li>
-          <li><strong>Connected Systems:</strong> Tied our learning environment directly into our data tools (Looker, Hubspot, and Amplitude), making it easy to track how 72k+ enrollments influenced account health and product adoption.</li>
-        </ul>
-      </div>
-      <div class="block">
-        <div class="block-tag">Live Training</div>
-        <h3>Cross-Team Problem Solving</h3>
-        <p>When technical glitches or system disconnects threaten the customer experience, I step in to coordinate with engineering, protect your accounts, and fix the root cause.</p>
-        <ul>
-          <li><strong>Saving Key Revenue:</strong> Led the rapid recovery and complete data-backfill for a critical $200K ARR account after a major backend payment failure.</li>
-          <li><strong>Scaled Enablement:</strong> Streamlined our enterprise onboarding playbooks into automated, trigger-based email comms, scaling support coverage to 500+ mid-market customers without adding headcount.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION 2: THE EXPERIENCE PIPELINE -->
-  <section id="experience">
-    <h2 class="display-font">2. The Automated Content &amp; Enablement Pipeline</h2>
-    <div class="flow-container">
-      <div class="flow-step">
-        <div class="step-num display-font">1</div>
-        <div>
-          <h3>Asana to Skilljar Production Engine</h3>
-          <p>I built a full content pipeline using Asana that tracked development milestones from script to screen, and automated HTML authoring pushing 40 courses and 150+ video assets directly into Skilljar reducing setup friction.</p>
-        </div>
-      </div>
-      <div class="flow-step">
-        <div class="step-num display-font">2</div>
-        <div>
-          <h3>HubSpot &amp; Zapier Communication Loops</h3>
-          <p>Using Zapier, I worked with RevOps to link Skilljar enrollment events directly to HubSpot, triggering automated, personalized onboarding and milestone tracking emails to over 150k new users dynamically.</p>
-        </div>
-      </div>
-      <div class="flow-step">
-        <div class="step-num display-font">3</div>
-        <div>
-          <h3>Amplitude &amp; Looker Insights Matrix</h3>
-          <p>I routed learner activity data out of Skilljar into Amplitude and Looker, creating deep visibility dashboards so Marketing, Product, and CS could see exactly how course completions impacted customer product adoption and retention.</p>
-        </div>
-      </div>
-      <div class="flow-step">
-        <div class="step-num display-font">4</div>
-        <div>
-          <h3>Iorad &amp; Support Easy Generator Integration</h3>
-          <p>To support downstream customer teams, I combined step-by-step Iorad tutorials with a custom-built Support Easy Generator tool, allowing agents to instantly translate complex user technical friction into structured, fast-tracked solutions.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION 3: INSIGHTS & AUTOMATION -->
-  <section id="insights">
-    <h2 class="display-font">3. Smart Automation &amp; Award-Winning Ideas</h2>
-    <div class="board-layout">
-      <div class="block">
-        <div class="block-tag">Award Winner</div>
-        <h3>AI-Powered Learning</h3>
-        <p>I love finding modern, intelligent ways to keep students hooked and save course creators valuable time.</p>
-        <ul>
-          <li><strong>Chatbot Innovation:</strong> Took home an <em>Innovation in Education Award</em> for creatively integrating smart Chatbots straight into training courses.</li>
-          <li><strong>Exec AI Workflows:</strong> Programmed custom AI tools to instantly transform long, unstructured content streams into clear, actionable executive summaries and automated performance tracking logs.</li>
-        </ul>
-      </div>
-      <div class="block">
-        <div class="block-tag">Data Loops</div>
-        <h3>Tracking What Matters</h3>
-        <p>I build tracking loops that connect student actions to the tools your customer teams live in every day.</p>
-        <ul>
-          <li><strong>Clear Views:</strong> Map course completions straight across Salesforce, Looker, and HubSpot so teams can see which accounts are learning.</li>
-          <li><strong>Feedback Gathering:</strong> Automate sentiment collection with Qualtrics and JotForm so we always know exactly when our audience thinks the material work is "Pure Gold!" or not!</li>
-        </ul>
-      </div>
-    </div>
-  </section>
 
   <!-- FOOTER -->
   <footer>
-    <h2 class="display-font" style="justify-content: center; margin-bottom: 20px; border: none;">Let's make customer learning effortless.</h2>
-    <p class="handwritten" style="opacity: 0.6; font-size: 1.1rem;">— Built with care for teams that scale modern education —</p>
+    <h2 class="display-font" style="justify-content: center; margin-bottom: 15px; border: none; font-size: 1.6rem;">Let's build the technical engine.</h2>
+    <p class="handwritten" style="opacity: 0.6; font-size: 1rem;">— Designed for teams that scale modern education —</p>
   </footer>
 </div>
 
