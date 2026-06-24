@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Technical & Educational Canvas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #FAF6EE;
+    --ink: #1E1B18;
+    --teal: #0D6E66;
+    --coral: #DE4C26;
+    --mustard: #C98510;
+    --sky: #2A52BE;
+    --highlighter: rgba(242, 167, 184, 0.4);
+  }
+  
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  
+  body {
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  .handwritten { font-family: 'Kalam', cursive; }
+  .display-font { font-family: 'Space Grotesk', sans-serif; }
+
+  /* --- SIMPLE FLOATING NAV --- */
+  nav {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #fff;
+    border: 2px solid var(--ink);
+    border-radius: 30px;
+    padding: 8px 24px;
+    display: flex;
+    gap: 20px;
+    box-shadow: 4px 4px 0 var(--ink);
+    z-index: 100;
+  }
+  nav a {
+    text-decoration: none;
+    color: var(--ink);
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--teal); }
+
+  /* --- CANVAS LAYOUT --- */
+  .canvas {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 24px;
+    position: relative;
+  }
+
+  /* --- HEADER SECTIONS --- */
+  header {
+    margin-bottom: 80px;
+    position: relative;
+  }
+  .eyebrow {
+    color: var(--coral);
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    display: inline-block;
+    transform: rotate(-1deg);
+  }
+  h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 1.1;
+    margin-bottom: 24px;
+  }
+  .highlight {
+    background: linear-gradient(180deg, transparent 60%, var(--highlighter) 60%);
+    padding: 0 4px;
+  }
+  .intro-text {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    max-width: 750px;
+    color: #444;
+  }
+
+  /* --- QUICK BANNER STATS --- */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-bottom: 80px;
+  }
+  .stat-card {
+    background: #fff;
+    border: 2px solid var(--ink);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 5px 5px 0 var(--ink);
+    transform: rotate(var(--rot, -1deg));
+  }
+  .stat-card:nth-child(even) { --rot: 1.5deg; }
+  .stat-num { font-size: 2.5rem; font-weight: 700; color: var(--teal); }
+  .stat-label { font-size: 1rem; color: #555; margin-top: 5px; }
+
+  /* --- GRAPHIC SECTIONS --- */
+  section {
+    margin-bottom: 100px;
+    scroll-margin-top: 100px;
+  }
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  h2::after {
+    content: '';
+    flex-grow: 1;
+    height: 3px;
+    background: repeating-linear-gradient(90deg, var(--ink), var(--ink) 4px, transparent 4px, transparent 8px);
+  }
+
+  /* --- BOX BLOCKS --- */
+  .board-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+  }
+  .block {
+    background: #fff;
+    border: 2.5px solid var(--ink);
+    border-radius: 16px;
+    padding: 30px;
+    position: relative;
+    box-shadow: 6px 6px 0 rgba(0,0,0,0.05);
+  }
+  .block-tag {
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    background: var(--ink);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .block h3 { margin-bottom: 15px; font-size: 1.3rem; }
+  .block p { font-size: 1rem; line-height: 1.6; color: #333; margin-bottom: 15px; }
+  
+  ul { list-style: none; }
+  ul li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    line-height: 1.5;
+    font-size: 0.95rem;
+  }
+  ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--coral);
+    font-weight: bold;
+  }
+
+  /* --- SPEECH BUBBLE VARIANT --- */
+  .bubble {
+    background: #fff;
+    border: 2px solid var(--ink);
+    border-radius: 20px;
+    padding: 24px;
+    position: relative;
+    font-style: italic;
+    margin-top: 20px;
+  }
+  .bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 40px;
+    width: 0; height: 0;
+    border: 12px solid transparent;
+    border-top-color: #fff;
+    border-bottom: 0;
+    filter: drop-shadow(0 2px 0 var(--ink));
+  }
+
+  /* --- SYSTEM FLOW MAP --- */
+  .flow-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .flow-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    background: rgba(255,255,255,0.6);
+    border: 2px dashed var(--ink);
+    border-radius: 12px;
+    padding: 20px;
+  }
+  .step-num {
+    background: var(--mustard);
+    color: var(--ink);
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: bold; font-size: 1.1rem; border: 2px solid var(--ink);
+    flex-shrink: 0;
+  }
+
+  /* --- FOOTER CTA --- */
+  footer {
+    text-align: center;
+    padding: 60px 0;
+    border-top: 3px dashed var(--ink);
+  }
+  .cta-btn {
+    display: inline-block;
+    background: var(--coral);
+    color: #fff;
+    padding: 16px 36px;
+    font-size: 1.2rem;
+    text-decoration: none;
+    border: 2.5px solid var(--ink);
+    border-radius: 12px;
+    box-shadow: 5px 5px 0 var(--ink);
+    transition: all 0.2s;
+  }
+  .cta-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0 var(--ink);
+  }
+
+  @media (max-width: 768px) {
+    nav { position: absolute; top: 20px; right: 20px; }
+    header { margin-top: 40px; }
+    .board-layout { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#stack">My Stack</a>
+  <a href="#pipelines">Pipelines</a>
+  <a href="#data">Data &amp; AI</a>
+</nav>
+
+<div class="canvas">
+  <!-- HERO HEADER -->
+  <header>
+    <span class="eyebrow handwritten">The Architecture of Learning //</span>
+    <h1 class="display-font">I build the <span class="highlight">technical systems</span> behind Customer Education.</h1>
+    <p class="intro-text">I am an education systems architect. From scaling platform architectures to stitching data workflows together and designing custom AI processing layers, I remove operational friction so high-impact content can ship continuously.</p>
+  </header>
+
+  <!-- QUICK METRICS -->
+  <div class="stats-grid display-font">
+    <div class="stat-card">
+      <div class="stat-num">35K+</div>
+      <div class="stat-label">Self-Serve Users Scaled</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">40+</div>
+      <div class="stat-label">LMS Courses Built from 0 to 1</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">40-50%</div>
+      <div class="stat-label">Reduction in Ops Friction</div>
+    </div>
+  </div>
+
+  <!-- SECTION 1: TECH STACK & LMS -->
+  <section id="stack">
+    <h2 class="display-font">1. LMS Stack &amp; Infrastructure Ownership</h2>
+    <div class="board-layout">
+      <div class="block">
+        <div class="block-tag">Platform Admin</div>
+        <h3>LMS Blueprinting</h3>
+        <p>I specialize in standing up, configuration-hardening, and deeply connecting LMS systems into core product platforms.</p>
+        <ul>
+          <li><strong>Skilljar Blueprint:</strong> Administered and deployed Zapier Learn Academy from the ground up, establishing 12 programmatic paths.</li>
+          <li><strong>Ecosystem Integration:</strong> Embedded tracking layers directly between LMS environments and product analytics engines to fuel tailored customer pathways.</li>
+        </ul>
+      </div>
+      <div class="block">
+        <div class="block-tag">Build vs Buy</div>
+        <h3>System Integrations &amp; Triage</h3>
+        <p>When the ecosystem fragments, I coordinate across engineering boundaries to design custom resolutions and workarounds.</p>
+        <ul>
+          <li><strong>Outage Recovery:</strong> Led the stabilization and complete data-backfill of a $200K ARR account following a payment infrastructure logic failure.</li>
+          <li><strong>Hardened Logic:</strong> Re-architected multi-tier alerting pathways to proactively safeguard enterprise tier delivery loops.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: PRODUCTION PIPELINES -->
+  <section id="pipelines">
+    <h2 class="display-font">2. End-to-End Production Pipelines</h2>
+    <div class="flow-container">
+      <div class="flow-step">
+        <div class="step-num display-font">1</div>
+        <div>
+          <h3>Intake &amp; Scope Balancing</h3>
+          <p>I operate intake loops structured on clean, decoupled milestones. I balance async leadership frameworks against actual resource availability to eliminate upfront scoping bottlenecks before production cycles commit hours.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num display-font">2</div>
+        <div>
+          <h3>Rigorous Execution &amp; Scale</h3>
+          <p>I own the pipeline infrastructure that shapes abstract curriculum ideas into hardened, shipping programs. At PitchBook, I orchestrated a complex matrix delivery framework to accurately roll out intermediate curriculum paths across 600 separate team targets simultaneously.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num display-font">3</div>
+        <div>
+          <h3>Transitioning to Self-Service</h3>
+          <p>I actively replace fragile, high-touch training overhead with reliable self-service logic layers—deploying structures like 84 programmatic interactive system simulators to reduce downstream managerial instruction burdens by up to 50%.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: DATA & AI INFRASTRUCTURE -->
+  <section id="data">
+    <h2 class="display-font">3. Data Instrumentation &amp; AI Integration</h2>
+    <div class="board-layout">
+      <div class="block">
+        <div class="block-tag">BI &amp; Tooling</div>
+        <h3>Data Autonomy</h3>
+        <p>I design my own tracking instrumentation matrices and write targeted queries directly inside deep BI architectures, bypassing engineering dependencies entirely.</p>
+        <ul>
+          <li><strong>Looker &amp; Tableau Dashboards:</strong> Created tracking logic architectures explicitly mapping education engagement patterns cleanly against real retention variables.</li>
+          <li><strong>Rate of Task Usage:</strong> Co-designed a predictive user telemetry health engine to signal plan utilization thresholds long before churn windows opened.</li>
+        </ul>
+      </div>
+      <div class="block">
+        <div class="block-tag">AI Engineering</div>
+        <h3>Automated AI Pipelines</h3>
+        <p>I build programmatic automation directly into my daily operational fabrics using advanced LLM processing sequences.</p>
+        <ul>
+          <li><strong>Custom Claude Layers:</strong> Built automated engines parsing deep programmatic learner session data logs directly through custom-engineered Claude skills.</li>
+          <li><strong>Automated Playbooks:</strong> Programmed logic pipelines converting text streams into structured, instantly actionable manager summary maps and automated data logs.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <h2 class="display-font" style="justify-content: center; margin-bottom: 20px; border: none;">Let's build the systems next.</h2>
+    <p style="margin-bottom: 40px; font-size: 1.1rem; color: #555;">I engineer the foundational stacks that empower scale. Let's trace out a clear path together.</p>
+    <a href="mailto:your.email@example.com" class="cta-btn display-font">Initialize Conversation</a>
+    <p class="handwritten" style="margin-top: 40px; opacity: 0.6; font-size: 1.1rem;">— Hand-sketched logic for modern execution environments —</p>
+  </footer>
+</div>
+
+</body>
+</html>
