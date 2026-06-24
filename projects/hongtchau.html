@@ -3,441 +3,515 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Technical Enablement & Learning Architecture</title>
+<title>Technical Enablement Architecture Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --paper: #FAF6EE;
-    --ink: #1E1B18;
-    --teal: #0D6E66;
-    --coral: #DE4C26;
-    --mustard: #C98510;
-    --sky: #2A52BE;
-    --highlighter: rgba(242, 167, 184, 0.4);
-    --pill-bg: #fff;
+    --bg-grid: #f3f5f9;
+    --blueprint-line: #e2e8f0;
+    --ink: #0f172a;
+    --teal: #0d9488;
+    --teal-light: #ccfbf1;
+    --coral: #f97316;
+    --coral-light: #ffedd5;
+    --sky: #2563eb;
+    --sky-light: #dbeafe;
+    --mustard: #d97706;
+    --card-bg: #ffffff;
   }
   
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   
   body {
-    background-color: var(--paper);
+    background-color: var(--bg-grid);
+    /* Technical engineering graph paper background */
+    background-image: 
+      linear-gradient(var(--blueprint-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--blueprint-line) 1px, transparent 1px);
+    background-size: 20px 20px;
     color: var(--ink);
     font-family: 'Inter', sans-serif;
     padding: 0;
     overflow-x: hidden;
   }
 
-  .handwritten { font-family: 'Kalam', cursive; }
   .display-font { font-family: 'Space Grotesk', sans-serif; }
 
-  /* --- CANVAS LAYOUT --- */
   .canvas {
-    max-width: 900px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 60px 24px;
-    position: relative;
   }
 
-  /* --- HEADER SECTIONS --- */
+  /* --- PRESENTATION DECK HEADER --- */
   header {
-    margin-bottom: 50px;
+    margin-bottom: 40px;
+    background: var(--card-bg);
+    border: 2px solid var(--ink);
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 6px 6px 0 var(--ink);
     position: relative;
   }
   .eyebrow {
-    color: var(--coral);
-    font-size: 1.3rem;
-    margin-bottom: 8px;
+    background: var(--ink);
+    color: #fff;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 4px 10px;
+    border-radius: 6px;
     display: inline-block;
-    transform: rotate(-1deg);
+    margin-bottom: 16px;
+    font-weight: 700;
   }
   h1 {
-    font-size: clamp(2.2rem, 5vw, 3.8rem);
-    line-height: 1.15;
-    margin-bottom: 20px;
-  }
-  .highlight {
-    background: linear-gradient(180deg, transparent 60%, var(--highlighter) 60%);
-    padding: 0 4px;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.2;
+    margin-bottom: 16px;
+    font-weight: 700;
   }
   .intro-text {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     line-height: 1.6;
-    color: #333;
+    color: #475569;
+    max-width: 800px;
   }
 
-  /* --- QUICK BANNER STATS --- */
-  .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 16px;
-    margin-bottom: 60px;
-  }
-  .stat-card {
-    background: #fff;
-    border: 2px solid var(--ink);
-    border-radius: 12px;
+  /* --- INTERACTIVE VIEW CONTROLLER (THE PROP CONTROL) --- */
+  .control-deck {
+    background: var(--ink);
+    color: #fff;
     padding: 20px;
-    box-shadow: 4px 4px 0 var(--ink);
-    transform: rotate(var(--rot, -0.5deg));
-  }
-  .stat-card:nth-child(even) { --rot: 1deg; }
-  .stat-num { font-size: 2rem; font-weight: 700; color: var(--teal); }
-  .stat-label { font-size: 0.85rem; color: #555; margin-top: 4px; font-weight: 500; }
-
-  /* --- CAREER JOURNEY TIMELINE --- */
-  .timeline-container {
+    border-radius: 12px;
+    margin-bottom: 40px;
     display: flex;
-    flex-direction: column;
-    gap: 36px;
-    position: relative;
-    padding-left: 24px;
-    border-left: 3px dashed var(--ink);
-  }
-  .timeline-node {
-    position: relative;
-    background: #fff;
-    border: 2.5px solid var(--ink);
-    border-radius: 16px;
-    padding: 28px;
-    box-shadow: 5px 5px 0 var(--ink);
-  }
-  .timeline-node::before {
-    content: '';
-    position: absolute;
-    left: -36px;
-    top: 30px;
-    width: 18px;
-    height: 18px;
-    background: var(--paper);
-    border: 3px solid var(--coral);
-    border-radius: 50%;
-    z-index: 2;
-  }
-  .timeline-meta {
-    display: flex;
+    align-items: center;
     justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 16px;
     flex-wrap: wrap;
-    gap: 5px;
+    gap: 16px;
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.15);
   }
-  .timeline-role {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--teal);
-  }
-  .timeline-company {
-    font-size: 0.95rem;
-    font-weight: 700;
+  .control-label {
+    font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: #555;
+    color: #94a3b8;
+    font-weight: 600;
   }
-
-  /* --- ENGINE GRID --- */
-  .engine-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-top: 14px;
+  .btn-group {
+    display: flex;
+    gap: 10px;
   }
-  @media (max-width: 650px) {
-    .engine-grid { grid-template-columns: 1fr; }
-  }
-
-  .engine-block {
-    background: rgba(0,0,0,0.02);
-    border: 1px dashed rgba(0,0,0,0.15);
+  .view-btn {
+    background: #1e293b;
+    color: #cbd5e1;
+    border: 1px solid #334155;
+    padding: 8px 16px;
     border-radius: 8px;
-    padding: 14px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
   }
-  .engine-block-title {
+  .view-btn:hover {
+    background: #334155;
+    color: #fff;
+  }
+  .view-btn.active {
+    background: var(--teal);
+    color: #fff;
+    border-color: var(--teal);
+    box-shadow: 0 0 12px rgba(13, 148, 136, 0.4);
+  }
+
+  /* --- HEADS UP DISPLAY (HUD) METRICS --- */
+  .hud-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .hud-card {
+    background: var(--card-bg);
+    border: 2px solid var(--ink);
+    border-radius: 12px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hud-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 4px;
+    background: var(--ink);
+  }
+  .hud-card.accent-teal::before { background: var(--teal); }
+  .hud-card.accent-coral::before { background: var(--coral); }
+  .hud-card.accent-sky::before { background: var(--sky); }
+  
+  .hud-num { font-size: 2.2rem; font-weight: 700; color: var(--ink); letter-spacing: -0.02em; }
+  .hud-label { font-size: 0.85rem; color: #64748b; margin-top: 2px; font-weight: 600; text-transform: uppercase; }
+
+  /* --- SYSTEM ARCHITECTURE NODES --- */
+  .architecture-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  .system-node {
+    background: var(--card-bg);
+    border: 2px solid var(--ink);
+    border-radius: 16px;
+    padding: 32px;
+    transition: transform 0.2s ease, opacity 0.3s ease, box-shadow 0.2s ease;
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 32px;
+    position: relative;
+  }
+  .system-node:hover {
+    transform: translateY(-2px);
+    box-shadow: 6px 6px 0 var(--ink);
+  }
+
+  /* Filter-out animation look */
+  .system-node.dimmed {
+    opacity: 0.25;
+    transform: scale(0.99);
+    pointer-events: none;
+  }
+
+  /* Left Column: Meta & Stack */
+  .node-sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 1px dashed #cbd5e1;
+    padding-right: 16px;
+  }
+  .node-company {
     font-size: 0.8rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
+    color: #64748b;
+    margin-bottom: 4px;
   }
-  .eb-systems { color: var(--sky); }
-  .eb-impact { color: var(--coral); }
-
-  /* --- PILLS / CHIPS --- */
-  .tool-pill {
-    display: inline-block;
-    font-size: 0.75rem;
-    font-weight: 600;
-    background: #fff;
+  .node-role {
+    font-size: 1.3rem;
+    font-weight: 700;
+    line-height: 1.2;
     color: var(--ink);
-    border: 1.5px solid var(--ink);
-    padding: 2px 8px;
-    border-radius: 20px;
+  }
+  .stack-box {
+    margin-top: 20px;
+  }
+  .stack-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #94a3b8;
+    margin-bottom: 8px;
+  }
+  .tool-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    background: #f1f5f9;
+    color: #334155;
+    border: 1px solid #cbd5e1;
+    padding: 3px 8px;
+    border-radius: 6px;
     margin: 2px;
-    box-shadow: 1px 1px 0 var(--ink);
   }
+
+  /* Right Column: Content Blocks */
+  .node-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .node-desc {
+    font-size: 0.95rem;
+    color: #475569;
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+
+  /* Visual Highlight / Badge Rows instead of classic bullets */
+  .highlight-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 12px;
+    background: #f8fafc;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border-left: 4px solid var(--ink);
+  }
+  .highlight-row.type-systems { border-left-color: var(--sky); }
+  .highlight-row.type-revenue { border-left-color: var(--coral); }
+
+  .badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    margin-top: 1px;
+  }
+  .badge.systems { background: var(--sky-light); color: var(--sky); }
+  .badge.revenue { background: var(--coral-light); color: var(--coral); }
   
-  .timeline-node ul {
-    list-style: none;
-    padding-left: 0;
-  }
-  .timeline-node ul li {
+  .highlight-text {
     font-size: 0.95rem;
     line-height: 1.5;
-    color: #333;
-    margin-bottom: 6px;
-    padding-left: 15px;
-    position: relative;
-  }
-  .timeline-node ul li::before {
-    content: '•';
-    position: absolute;
-    left: 0;
-    color: var(--mustard);
-    font-weight: bold;
+    color: var(--ink);
   }
 
-  .timeline-node.whats-next {
-    background: repeating-linear-gradient(45deg, rgba(201,133,16,0.05), rgba(201,133,16,0.05) 10px, rgba(255,255,255,0.6) 10px, rgba(255,255,255,0.6) 20px);
-    border: 2.5px dashed var(--mustard);
-  }
-  .timeline-node.whats-next::before {
-    border-color: var(--mustard);
-    background: #fff;
-  }
-
-  /* --- FOOTER CTA --- */
-  footer {
+  /* Future Block Focus Styling */
+  .system-node.future-horizon {
+    background: var(--ink);
+    color: #fff;
+    grid-template-columns: 1fr;
     text-align: center;
-    padding: 60px 0 20px 0;
-    border-top: 3px dashed var(--ink);
-    margin-top: 80px;
+    border-style: solid;
+  }
+  .system-node.future-horizon .horizon-title {
+    font-size: 1.6rem;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+  .system-node.future-horizon p {
+    color: #94a3b8;
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1rem;
+    line-height: 1.6;
   }
 
-  @media (max-width: 768px) {
-    .timeline-meta { flex-direction: column; align-items: flex-start; }
-    .timeline-company { margin-top: 2px; }
+  @media (max-width: 800px) {
+    .system-node { grid-template-columns: 1fr; gap: 20px; }
+    .node-sidebar { border-right: none; border-bottom: 1px dashed #cbd5e1; padding-right: 0; padding-bottom: 16px; }
   }
 </style>
 </head>
 <body>
 
 <div class="canvas">
-  <!-- HERO HEADER -->
+  <!-- PROP HEADER -->
   <header>
-    <span class="eyebrow handwritten">The Art of Enablement //</span>
-    <h1 class="display-font">I design the systems that make tech education <span class="highlight">scale.</span></h1>
-    <p class="intro-text">I bridge the gap between complex backend architectures and modern learning programs. From engineering automated content pipelines to mapping student data ecosystems into health score metrics, I build the operational technical blueprints that make enterprise customer enablement completely effortless.</p>
+    <span class="eyebrow display-font">Interactive Architecture Overview</span>
+    <h1 class="display-font">Engineering Scalable Learning Frameworks</h1>
+    <p class="intro-text">I align complex infrastructure with educational delivery. Use the control deck below to isolate how my background directly impacts backend scaling challenges or core business revenue engines.</p>
   </header>
 
-  <!-- QUICK METRICS BANNER -->
-  <div class="stats-grid display-font">
-    <div class="stat-card">
-      <div class="stat-num">35,000+</div>
-      <div class="stat-label">Academy Students</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-num">72,000+</div>
-      <div class="stat-label">Course Enrollments</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-num">26,000+</div>
-      <div class="stat-label">Learning Hours</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-num">25%</div>
-      <div class="stat-label">Total ARR Managed</div>
+  <!-- THE INTERACTIVE PROP DECK CONTROLLER -->
+  <div class="control-deck">
+    <div class="control-label display-font">⚡ Filter Live Presentation Lens:</div>
+    <div class="btn-group">
+      <button class="view-btn active" onclick="filterView('all')">Show Complete Arc</button>
+      <button class="view-btn" onclick="filterView('systems')">Systems &amp; Architecture</button>
+      <button class="view-btn" onclick="filterView('revenue')">Strategy &amp; Revenue</button>
     </div>
   </div>
 
-  <!-- CAREER JOURNEY TIMELINE -->
-  <div class="timeline-container">
+  <!-- MACRO HUD METRICS -->
+  <div class="hud-metrics display-font">
+    <div class="hud-card accent-teal">
+      <div class="hud-num">35K+</div>
+      <div class="hud-label">Global Students Managed</div>
+    </div>
+    <div class="hud-card accent-sky">
+      <div class="hud-num">72K+</div>
+      <div class="hud-label">Course Enrollments</div>
+    </div>
+    <div class="hud-card accent-coral">
+      <div class="hud-num">25%</div>
+      <div class="hud-label">Total Corporate ARR Preserved</div>
+    </div>
+  </div>
+
+  <!-- FLOW ENGINE CONTAINER -->
+  <div class="architecture-flow">
     
-    <!-- BROWN 1 -->
-    <div class="timeline-node">
-      <div class="timeline-meta">
-        <span class="timeline-role display-font">Instructional Technologist</span>
-        <span class="timeline-company">Brown University</span>
-      </div>
-      <p style="font-size: 0.95rem; color: #555; margin-bottom: 10px;">Managed core in-classroom technology systems and framework strategies.</p>
-      
-      <div class="engine-grid">
-        <div class="engine-block">
-          <div class="engine-block-title eb-systems">🛠️ Stack &amp; Tooling</div>
-          <div class="tool-pill">LMS Environments</div>
-          <div class="tool-pill">Classroom Hardware</div>
-          <div class="tool-pill">Migration Scripts</div>
+    <!-- NODE 1: PITCHBOOK -->
+    <div class="system-node" data-tags="systems">
+      <div class="node-sidebar">
+        <div>
+          <div class="node-company display-font">PitchBook Data</div>
+          <div class="node-role display-font">Program Manager</div>
         </div>
-        <div class="engine-block">
-          <div class="engine-block-title eb-impact">📊 Highlights</div>
-          <ul>
-            <li>Migrated outdated legacy LMS infrastructures seamlessly over to modern learning systems.</li>
-            <li>Led technical faculty training workshops to spark immediate classroom technology adoptions.</li>
-          </ul>
+        <div class="stack-box">
+          <div class="stack-title display-font">Infrastructure</div>
+          <div class="tool-tag">Exec AI</div>
+          <div class="tool-tag">Asana Advanced</div>
+          <div class="tool-tag">Airtable DB</div>
         </div>
       </div>
-    </div>
-
-    <!-- BROWN 2 -->
-    <div class="timeline-node">
-      <div class="timeline-meta">
-        <span class="timeline-role display-font">Instructional Designer</span>
-        <span class="timeline-company">Brown University</span>
-      </div>
-      <p style="font-size: 0.95rem; color: #555; margin-bottom: 10px;">Partnered directly with research faculty to convert theory into operational technology design.</p>
-      
-      <div class="engine-grid">
-        <div class="engine-block">
-          <div class="engine-block-title eb-systems">🛠️ Stack &amp; Tooling</div>
-          <div class="tool-pill">Digital Media Suites</div>
-          <div class="tool-pill">UX/UI Blueprints</div>
-          <div class="tool-pill">Curriculum Prototyping</div>
+      <div class="node-content">
+        <p class="node-desc">Re-architected cross-functional program workflows to handle rapid structural updates across highly complex financial platforms.</p>
+        
+        <div class="highlight-row type-systems">
+          <span class="badge systems">Systems</span>
+          <div class="highlight-text">Built a centralized program hub using <strong>Asana &amp; Airtable architectures</strong> to instantly map and evaluate platform feature releases.</div>
         </div>
-        <div class="engine-block">
-          <div class="engine-block-title eb-impact">📊 Highlights</div>
-          <ul>
-            <li>Translated highly complex academic research projects into fresh, modern, interactive student tech portfolios.</li>
-          </ul>
+        <div class="highlight-row type-systems">
+          <span class="badge systems">Systems</span>
+          <div class="highlight-text">Spearheaded the integration, internal risk compliance evaluation, and deployment of <strong>Exec AI framework tooling</strong>.</div>
         </div>
       </div>
     </div>
 
-    <!-- SKILLJAR -->
-    <div class="timeline-node">
-      <div class="timeline-meta">
-        <span class="timeline-role display-font">Customer Success &amp; Technical Solutions</span>
-        <span class="timeline-company">Skilljar</span>
+    <!-- NODE 2: ZAPIER CED -->
+    <div class="system-node" data-tags="systems revenue">
+      <div class="node-sidebar">
+        <div>
+          <div class="node-company display-font">Zapier</div>
+          <div class="node-role display-font">Manager, Customer Ed</div>
+        </div>
+        <div class="stack-box">
+          <div class="stack-title display-font">Infrastructure</div>
+          <div class="tool-tag">Skilljar</div>
+          <div class="tool-tag">HubSpot API</div>
+          <div class="tool-tag">Amplitude</div>
+          <div class="tool-tag">Asana Automation</div>
+        </div>
       </div>
-      <p style="font-size: 0.95rem; color: #555; margin-bottom: 10px;">Engineered technical platform setups while maintaining strategic enterprise expansion pipelines.</p>
-      
-      <div class="engine-grid">
-        <div class="engine-block">
-          <div class="engine-block-title eb-systems">🛠️ Stack &amp; Tooling</div>
-          <div class="tool-pill">Skilljar LMS</div>
-          <div class="tool-pill">Salesforce</div>
-          <div class="tool-pill">HTML/CSS Custom Overrides</div>
+      <div class="node-content">
+        <p class="node-desc">Built a high-scale customer academy ecosystem completely from the ground up utilizing automated web-hook pipelines.</p>
+        
+        <div class="highlight-row type-systems">
+          <span class="badge systems">Systems</span>
+          <div class="highlight-text">Stood up the division from <strong>0 to 1</strong>, designing <strong>4 technical learning tracks</strong> connected to live data loops.</div>
+        </div>
+        <div class="highlight-row type-revenue">
+          <span class="badge revenue">Revenue</span>
+          <div class="highlight-text">Integrated user course events straight into HubSpot, firing automated targeted engagement setups out to over <strong>150,000 global users</strong>.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NODE 3: ZAPIER CSM -->
+    <div class="system-node" data-tags="systems revenue">
+      <div class="node-sidebar">
+        <div>
+          <div class="node-company display-font">Zapier</div>
+          <div class="node-role display-font">Enterprise CSM</div>
+        </div>
+        <div class="stack-box">
+          <div class="stack-title display-font">Infrastructure</div>
+          <div class="tool-tag">Zapier Automation</div>
+          <div class="tool-tag">Looker</div>
+          <div class="tool-tag">Usage Tracking</div>
+        </div>
+      </div>
+      <div class="node-content">
+        <p class="node-desc">Designed account monitoring dashboards to scale enterprise health assessments across sprawling technical customer configurations.</p>
+        
+        <div class="highlight-row type-revenue">
+          <span class="badge revenue">Revenue</span>
+          <div class="highlight-text">Automated usage health logging arrays natively to proactively flag risk signals across a portfolio of <strong>100 enterprise organizations</strong>.</div>
+        </div>
+        <div class="highlight-row type-systems">
+          <span class="badge systems">Systems</span>
+          <div class="highlight-text">Co-authored systematic framework data rules converting raw platform event logs directly into Global Customer Health Metrics.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NODE 4: SKILLJAR -->
+    <div class="system-node" data-tags="systems revenue">
+      <div class="node-sidebar">
+        <div>
+          <div class="node-company display-font">Skilljar</div>
+          <div class="node-role display-font">Technical Solutions</div>
+        </div>
+        <div class="stack-box">
+          <div class="stack-title display-font">Infrastructure</div>
+          <div class="tool-tag">Skilljar Core</div>
+          <div class="tool-tag">Salesforce</div>
+          <div class="tool-tag">CSS/HTML Overrides</div>
           <div class="tool-pill">Certification APIs</div>
         </div>
-        <div class="engine-block">
-          <div class="engine-block-title eb-impact">📊 Highlights</div>
-          <ul>
-            <li>Guided over <strong>50 enterprise customers</strong> step-by-step through baseline LMS launch configurations.</li>
-            <li>Managed the top <strong>15 strategic accounts</strong> to grow and retain <strong>18% of total company ARR</strong>.</li>
-            <li>Launched our first Customer Advisory Board (CAB) and built playbooks for technical certification setups and brand identity changes.</li>
-          </ul>
+      </div>
+      <div class="node-content">
+        <p class="node-desc">Oversaw core platform implementations and custom development while managing strategic baseline renewal targets.</p>
+        
+        <div class="highlight-row type-systems">
+          <span class="badge systems">Systems</span>
+          <div class="highlight-text">Safely guided over <strong>50 distinct enterprise architectures</strong> through base integration setups and DNS configurations.</div>
+        </div>
+        <div class="highlight-row type-revenue">
+          <span class="badge revenue">Revenue</span>
+          <div class="highlight-text">Directly managed implementation strategy for the top 15 book-of-business accounts, protecting <strong>25% of absolute company ARR</strong>.</div>
         </div>
       </div>
     </div>
 
-    <!-- ZAPIER CSM -->
-    <div class="timeline-node">
-      <div class="timeline-meta">
-        <span class="timeline-role display-font">Enterprise Customer Success Manager</span>
-        <span class="timeline-company">Zapier</span>
-      </div>
-      <p style="font-size: 0.95rem; color: #555; margin-bottom: 10px;">Scaled enterprise success models through automated product health tracking matrices.</p>
-      
-      <div class="engine-grid">
-        <div class="engine-block">
-          <div class="engine-block-title eb-systems">🛠️ Stack &amp; Tooling</div>
-          <div class="tool-pill">Zapier Integration Engine</div>
-          <div class="tool-pill">Looker</div>
-          <div class="tool-pill">Product Usage Telemetry</div>
-          <div class="tool-pill">Customer Health Score Logs</div>
+    <!-- NODE 5: BROWN UNIVERSITY ARCHIVES -->
+    <div class="system-node" data-tags="systems">
+      <div class="node-sidebar">
+        <div>
+          <div class="node-company display-font">Brown University</div>
+          <div class="node-role display-font">Instructional Designer</div>
         </div>
-        <div class="engine-block">
-          <div class="engine-block-title eb-impact">📊 Highlights</div>
-          <ul>
-            <li>Scaled account health monitoring setups dynamically across a portfolio of <strong>100 enterprise accounts</strong>.</li>
-            <li>Co-authored playbooks that mapped raw product usage data directly into our Global Customer Health Scores.</li>
-            <li>Built an Enterprise CAB to protect and preserve revenue across highly complex technical environments.</li>
-          </ul>
+        <div class="stack-box">
+          <div class="stack-title display-font">Infrastructure</div>
+          <div class="tool-tag">LMS Architecture</div>
+          <div class="tool-tag">Data Migration</div>
+        </div>
+      </div>
+      <div class="node-content">
+        <p class="node-desc">Constructed the foundation of my career by converting theoretical, complex academic data spaces into clear UI structures.</p>
+        
+        <div class="highlight-row type-systems">
+          <span class="badge systems">Systems</span>
+          <div class="highlight-text">Designed functional data pipelines to migrate legacy on-premise university system data onto modernized hosting software.</div>
         </div>
       </div>
     </div>
 
-    <!-- ZAPIER CED -->
-    <div class="timeline-node">
-      <div class="timeline-meta">
-        <span class="timeline-role display-font">Manager, Customer Education</span>
-        <span class="timeline-company">Zapier</span>
-      </div>
-      <p style="font-size: 0.95rem; color: #555; margin-bottom: 10px;">Stood up a unified customer academy engine from 0-1 using systematic data loops.</p>
-      
-      <div class="engine-grid">
-        <div class="engine-block">
-          <div class="engine-block-title eb-systems">🛠️ Stack &amp; Tooling</div>
-          <div class="tool-pill">Asana</div>
-          <div class="tool-pill">Skilljar</div>
-          <div class="tool-pill">HubSpot Automation</div>
-          <div class="tool-pill">Amplitude</div>
-          <div class="tool-pill">Qualtrics</div>
-        </div>
-        <div class="engine-block">
-          <div class="engine-block-title eb-impact">📊 Highlights</div>
-          <ul>
-            <li>Built an entire education department from scratch (<strong>0 to 1</strong>), deploying <strong>4 structured learning paths</strong>.</li>
-            <li>Linked Asana pipelines to automatically coordinate HTML courses straight into Skilljar.</li>
-            <li>Connected student milestones to HubSpot, driving targeted communication loops to <strong>150,000+ active platform learners</strong>.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- PITCHBOOK -->
-    <div class="timeline-node">
-      <div class="timeline-meta">
-        <span class="timeline-role display-font">Program Manager, Product &amp; Industry Training</span>
-        <span class="timeline-company">PitchBook Data</span>
-      </div>
-      <p style="font-size: 0.95rem; color: #555; margin-bottom: 10px;">Re-architected tracking structures for comprehensive software and deep financial industry programs.</p>
-      
-      <div class="engine-grid">
-        <div class="engine-block">
-          <div class="engine-block-title eb-systems">🛠️ Stack &amp; Tooling</div>
-          <div class="tool-pill">Exec AI</div>
-          <div class="tool-pill">Asana (Advanced Templates)</div>
-          <div class="tool-pill">Airtable Databases</div>
-          <div class="tool-pill">Product Evaluation Pipelines</div>
-        </div>
-        <div class="engine-block">
-          <div class="engine-block-title eb-impact">📊 Highlights</div>
-          <ul>
-            <li>Built unified project management ecosystems using <strong>Asana &amp; Airtable</strong> to evaluate rolling product change impacts.</li>
-            <li>Vetted, integrated, and managed the complete workspace rollout of <strong>Exec AI</strong> tools.</li>
-            <li>Automated internal team output metrics, transforming manual task logs into an automated logging matrix.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- FUTURE -->
-    <div class="timeline-node whats-next">
-      <div class="timeline-meta">
-        <span class="timeline-role display-font" style="color: var(--mustard);">What's Next?</span>
-        <span class="timeline-company handwritten" style="text-transform: none;">The Horizon</span>
-      </div>
-      <p style="font-size: 0.95rem; color: #555; margin-bottom: 10px;">The Next System Build...</p>
-      
-      <div class="engine-grid">
-        <div class="engine-block" style="grid-column: 1 / -1;">
-          <div class="engine-block-title" style="color: var(--mustard);">🚀 The Architecture Plan</div>
-          <p style="font-size: 0.9rem; line-height: 1.5; color: #444;">Bringing high-powered data loops, enterprise-level learning infrastructure, and customized generative AI frameworks together to engineer the next generation of scalable enablement engines.</p>
-        </div>
+    <!-- HORIZON PANEL -->
+    <div class="system-node future-horizon">
+      <div>
+        <h2 class="horizon-title display-font">🚀 Next Architecture Initiative</h2>
+        <p>Seeking to combine enterprise learning infrastructure, data engineering automation loops, and contextual AI framework tools to deploy high-velocity enablement engines at scale.</p>
       </div>
     </div>
 
   </div>
-
-  <!-- FOOTER -->
-  <footer>
-    <h2 class="display-font" style="justify-content: center; margin-bottom: 15px; border: none; font-size: 1.6rem;">Let's build a smarter technical engine.</h2>
-    <p class="handwritten" style="opacity: 0.6; font-size: 1rem;">— Designed for systems that scale modern education —</p>
-  </footer>
 </div>
+
+<!-- LIVE PRESENTATION ENGINE INTERACTIVE SCRIPT -->
+<script>
+  function filterView(viewType) {
+    // Manage active button state
+    const buttons = document.querySelectorAll('.view-btn');
+    buttons.forEach(btn => btn.classList.remove('active'));
+    event.currentTarget.classList.add('active');
+
+    // Filter system card layers
+    const nodes = document.querySelectorAll('.system-node');
+    nodes.forEach(node => {
+      // Never hide the future looking panel
+      if (node.classList.contains('future-horizon')) return;
+      
+      const tags = node.getAttribute('data-tags');
+      if (viewType === 'all') {
+        node.classList.remove('dimmed');
+      } else if (tags && tags.includes(viewType)) {
+        node.classList.remove('dimmed');
+      } else {
+        node.classList.add('dimmed');
+      }
+    });
+  }
+</script>
 
 </body>
 </html>
