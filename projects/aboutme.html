@@ -233,16 +233,29 @@
     content: '✨';
   }
 
+  /* CENTERED WHAT'S NEXT NODE */
   .roadmap-node.whats-next {
+    grid-column: 1 / -1;
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
     background: repeating-linear-gradient(45deg, rgba(201,133,16,0.05), rgba(201,133,16,0.05) 10px, rgba(255,255,255,0.6) 10px, rgba(255,255,255,0.6) 20px);
     border: 2px dashed var(--mustard);
+    transform: rotate(0.5deg);
   }
   .roadmap-node.whats-next::before {
     border-color: var(--mustard);
     background: #fff;
+    left: calc(50% - 6px); /* Centers the clothesline pin marker */
   }
   .roadmap-node.whats-next .roadmap-metrics {
     border-top-color: var(--mustard);
+  }
+  .roadmap-node.whats-next .roadmap-metric-item {
+    padding-left: 0;
+  }
+  .roadmap-node.whats-next .roadmap-metric-item::before {
+    display: none; /* Clears the bullet icon for a cleaner centered look */
   }
 
   /* --- GRAPHIC SECTIONS --- */
@@ -370,6 +383,7 @@
   @media (max-width: 900px) {
     .roadmap-grid { grid-template-columns: repeat(2, 1fr); }
     .roadmap-grid::before { display: none; }
+    .roadmap-node.whats-next { grid-column: auto; max-width: none; }
   }
   @media (max-width: 600px) {
     .roadmap-grid { grid-template-columns: 1fr; }
@@ -441,7 +455,7 @@
         </div>
       </div>
 
-      <!-- NEW FUN NODE 1 -->
+      <!-- FUN NODE 1 -->
       <div class="roadmap-node fun-node">
         <div class="roadmap-meta">
           <span class="roadmap-role display-font">Volunteer</span>
@@ -464,14 +478,14 @@
         </div>
       </div>
 
-      <!-- NEW FUN NODE 2 -->
+      <!-- FUN NODE 2 -->
       <div class="roadmap-node fun-node">
         <div class="roadmap-meta">
           <span class="roadmap-role display-font">Hobbyist</span>
-          <span class="roadmap-company">Seattle, WA</span>
+          <span class="roadmap-company">Life Outside Code</span>
         </div>
         <div class="roadmap-metrics">
-          <div class="roadmap-metric-item">Really into ceramics, but could never master throwing a plate.</div>
+          <div class="roadmap-metric-item">Really into ceramics, but could never master the plate.</div>
           <div class="roadmap-metric-item">Crosswords, puzzles, and Pokémon Go.</div>
           <div class="roadmap-metric-item">Archery and cocktails, but never at the same time.</div>
         </div>
@@ -496,6 +510,18 @@
         <div class="roadmap-metrics">
           <div class="roadmap-metric-item">Built team from <strong>0 to 1 scratch build</strong>.</div>
           <div class="roadmap-metric-item">Transformed YouTube playlists into <strong>4 structured learning paths</strong>.</div>
+        </div>
+      </div>
+
+      <!-- FUN NODE 3 -->
+      <div class="roadmap-node fun-node">
+        <div class="roadmap-meta">
+          <span class="roadmap-role display-font">Activities Director</span>
+          <span class="roadmap-company">Seattle, WA</span>
+        </div>
+        <div class="roadmap-metrics">
+          <div class="roadmap-metric-item">Curating bespoke toddler experiences.</div>
+          <div class="roadmap-metric-item">Finding the best chocolate chip cookies in Seattle.</div>
         </div>
       </div>
 
